@@ -477,8 +477,8 @@
 <script>
     
 const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
-
-
+    
+const cssPath = "https://snackbs.asia/waifu/waifu.css"
 
 function loadExternalResource(url, type) {
 	return new Promise((resolve, reject) => {
@@ -504,7 +504,7 @@ function loadExternalResource(url, type) {
 
 if (screen.width >= 768) {
 	Promise.all([
-		loadExternalResource(live2d_path + "waifu.css", "css"),
+		loadExternalResource(cssPath, "css"),
 		loadExternalResource(live2d_path + "live2d.min.js", "js"),
 		loadExternalResource(live2d_path + "waifu-tips.js", "js")
 	]).then(() => {
