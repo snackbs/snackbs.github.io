@@ -501,7 +501,8 @@
     
 const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
     
-const cssPath = "https://snackbs.asia/waifu/waifu.css"
+	const cssPath = "https://snackbs.asia/waifu/waifu.css"
+	const waifuTipsJsonPath = "https://snackbs.asia/waifu/waifu-tips.json"
 
 function loadExternalResource(url, type) {
 	return new Promise((resolve, reject) => {
@@ -533,7 +534,7 @@ if (screen.width >= 768) {
 	]).then(() => {
 		
 		initWidget({
-			waifuPath: live2d_path + "waifu-tips.json",
+			waifuPath: waifuTipsJsonPath,
 			
 			cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/",
 			tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
