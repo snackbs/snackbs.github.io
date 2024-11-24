@@ -7,7 +7,17 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Mon, 25 Nov 2024 00:22:48 +0800</lastBuildDate><atom:link href="https://snackbs.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Nov 2024 04:07:48 +0800</lastBuildDate><atom:link href="https://snackbs.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ceshi</title>
+        <link>https://snackbs.github.io/p/ceshi/</link>
+        <pubDate>Mon, 25 Nov 2024 04:07:48 +0800</pubDate>
+        
+        <guid>https://snackbs.github.io/p/ceshi/</guid>
+        <description>&lt;h2 id=&#34;格式测试&#34;&gt;格式测试
+&lt;/h2&gt;&lt;p&gt;12345&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Indes</title>
         <link>https://snackbs.github.io/p/indes/</link>
         <pubDate>Mon, 25 Nov 2024 00:22:48 +0800</pubDate>
