@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Mon, 25 Nov 2024 09:08:42 +0800</lastBuildDate><atom:link href="https://snackbs.asia/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Nov 2024 09:11:16 +0800</lastBuildDate><atom:link href="https://snackbs.asia/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hello Word</title>
         <link>https://snackbs.asia/p/hello-word/</link>
         <pubDate>Mon, 25 Nov 2024 08:52:33 +0800</pubDate>
@@ -17,18 +17,18 @@
 &lt;/h1&gt;&lt;p&gt;此文章为Snackbs&amp;rsquo;s Blog建立后的第一篇纪念文章，它将永久保存，直至很久很久~~~&lt;br&gt;
 This article is the first commemorative post after the establishment of Snackbs&amp;rsquo;s Blog. It will be permanently preserved, until a very long time~~~&lt;/p&gt;
 &lt;h1 id=&#34;鸣谢&#34;&gt;鸣谢
-&lt;/h1&gt;&lt;p&gt;Snackbs&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;全部搭建工作&lt;br&gt;
-Hugo静态站点生成器&amp;mdash;&amp;ndash;提供了搭建底层 &lt;br&gt;
-由Jimmy设计的Stack主题-提供了blog的主题&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;Snackbs &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; 全部搭建工作&lt;br&gt;
+Hugo静态站点生成器 &amp;mdash;&amp;mdash;- 提供了搭建底层 &lt;br&gt;
+由Jimmy设计的Stack主题 &amp;mdash; 提供了blog的主题&lt;/p&gt;
 &lt;h1 id=&#34;blog所使用插件&#34;&gt;Blog所使用插件
 &lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;Aplayer&amp;mdash;&amp;mdash;&amp;mdash;-使得blog可以播放音乐！&lt;/li&gt;
-&lt;li&gt;Live2d-widget&amp;mdash;-使得blog有了一只可爱的看板娘！
+&lt;li&gt;Aplayer &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; 使得blog可以播放音乐！&lt;/li&gt;
+&lt;li&gt;Live2d-widget &amp;mdash;&amp;mdash;&amp;ndash; 使得blog有了一只可爱的看板娘！
 [待后续更新]………………&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id=&#34;blog搭建教程来源&#34;&gt;Blog搭建教程来源
 &lt;/h1&gt;&lt;p&gt;BiliBili by Letere-莱特雷&amp;ndash;非常感谢提供了搭建教程 &lt;br&gt;
-主页：https://letere-gzj.github.io/hugo-stack/
+主页：https://letere-gzj.github.io/hugo-stack/&lt;br&gt;
 bilibili: &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/402971365&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://space.bilibili.com/402971365&lt;/a&gt;&lt;/p&gt;
 </description>
