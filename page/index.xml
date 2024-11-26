@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 19:56:01 +0800</lastBuildDate><atom:link href="https://snackbs.asia/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 26 Nov 2024 21:07:47 +0800</lastBuildDate><atom:link href="https://snackbs.asia/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>分类&amp;标签</title>
         <link>https://snackbs.asia/categories-tags/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
@@ -21,7 +21,25 @@
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
         <guid>https://snackbs.asia/changelog/</guid>
-        <description>&lt;h3 id=&#34;002---more-optimize&#34;&gt;0.0.2 - More Optimize!
+        <description>&lt;h3 id=&#34;003---more-optimize-for-two&#34;&gt;0.0.3 - More Optimize For Two!
+&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241126-205443-v003&#34;&gt;snackbs 发布于 24.11.26 20:54:43 v0.0.3
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;一些调整： &lt;em&gt;主页布局间距调整&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;一些功能性添加： &lt;em&gt;首页欢迎板块&lt;/em&gt; &lt;em&gt;添加语法高级键盘模式&lt;/em&gt;&lt;code&gt;&amp;lt;kbd&amp;gt;CTRL&amp;lt;/kbd&amp;gt; + &amp;lt;kbd&amp;gt;C&amp;lt;/kbd&amp;gt;&lt;/code&gt; 预览： &lt;kbd&gt;CTRL&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt; &lt;em&gt;显示语言和复制按钮[下方代码块实示例]&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;l&#34;&gt;This is a test code block.&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;一些动画效果实现： &lt;em&gt;首页欢迎板块emoji实现摆动效果,欢迎文字实现字符跳动动画&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;002---more-optimize&#34;&gt;0.0.2 - More Optimize!
 &lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241126-194658-v002&#34;&gt;snackbs 发布于 24.11.26 19:46:58 v0.0.2
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;增加了 &lt;em&gt;页面加载进度条&lt;/em&gt; [ 页面加载进度更加明显了！]&lt;/li&gt;
