@@ -353,30 +353,46 @@
         
     
 
-    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 by snackbs
+    </section>
+    
+    <section class="powerby">
+        
+            snackbs的一个小小的博客 <br/>
+        
+        
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
 
-<script language="javascript"> 
-    var now = new Date();
-    function createtime(){
-        now.setTime(now.getTime()+250); 
-        var grt= new Date("2024/11/24 23:40:00"); 
-        days = (now - grt ) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;}
-        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if(String(snum).length ==1 ){snum = "0" + snum;}
+        <script language="javascript"> 
+            var now = new Date();
+            function createtime(){
+                now.setTime(now.getTime()+250); 
+                var grt= new Date("2024/11/24 23:40:00"); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24;
+                dnum = Math.floor(days);
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+                hnum = Math.floor(hours);
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;}
+                minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+                mnum = Math.floor(minutes);
+                if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                snum = Math.round(seconds);
+                if(String(snum).length ==1 ){snum = "0" + snum;}
+        
+                document.getElementById("timeDate").innerHTML = "本站已稳定运行"+dnum+" 天 ";
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+            }
+            setInterval("createtime()",250); 
+        </script>使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
 
-        document.getElementById("timeDate").innerHTML = "本站已稳定运行"+dnum+" 天 ";
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
-    }
-    setInterval("createtime()",250); 
-</script>         
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -473,292 +489,6 @@
 
         document.head.appendChild(customFont);
     }());
-</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js
-    server="netease"
-    type="playlist"
-    autoplay=false 
-    fixed=true 
-    lrc-type=0
-    id="12907746607"> 
-</meting-js> 
-<script>
-    ap = null
-    Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
-        set: function(aplayer) {
-            ap=aplayer
-            ready();
-        }
-    });
-    isRecover = false;
-    function ready(){
-        ap.on('canplay', function () {
-            if(!isRecover){
-                if(localStorage.getItem("musicIndex") != null){
-                    musicIndex = localStorage.getItem("musicIndex");
-                    musicTime = localStorage.getItem("musicTime");
-                    if(ap.list.index != musicIndex){
-                        ap.list.switch(musicIndex);
-                    }else{
-                        ap.seek(musicTime);
-                        ap.play();
-                        localStorage.clear();
-                        isRecover = true;
-                    }
-                }else{
-                    isRecover = true;
-                }
-            }
-        });
-    }
-    window.onbeforeunload = function(event) {
-        if(!ap.audio.paused){
-            musicIndex = ap.list.index;
-            musicTime = ap.audio.currentTime;
-            localStorage.setItem("musicIndex",musicIndex);
-            localStorage.setItem("musicTime",musicTime);
-        }
-    };
-</script>
-
-<div id="heatmap" style="
-  max-width: 600px;
-  height: 180px;
-  padding: 2px;
-  text-align: center;
-  margin: auto"
-></div>
-<script src="https://npm.elemecdn.com/echarts@5.3.0/dist/echarts.min.js"></script>
-<script type="text/javascript">
-  var chartDom = document.getElementById('heatmap');
-  var myChart = echarts.init(chartDom);
-  window.onresize = function() {
-      myChart.resize();
-  };
-  var option;
-
-  
-  
-  
-  
-  
-  
-  var dataMap = new Map();
-  
-    var key = "2024-11-25";
-    var value = dataMap.get(key);
-    var wordCount =  273 ;
-    var link = "/p/hello-word/";
-    var title = "Hello Word";
-    
-    
-    if (value == null) {
-      dataMap.set(key, [{wordCount, link, title}]);
-    } else {
-      value.push({wordCount, link, title});
-    }var data = [];
-  
-  for (const [key, value] of dataMap.entries()) {
-    var sum = 0;
-    for (const v of value) {
-      sum += v.wordCount;
-    }
-    data.push([key, (sum / 1000).toFixed(1)]);
-  }
-  
-  var startDate = new Date();
-  var year_Mill = startDate.setFullYear((startDate.getFullYear() - 1));
-  var startDate = +new Date(year_Mill);
-  var endDate = +new Date();
-
-  var dayTime = 3600 * 24 * 1000;
-  startDate = echarts.format.formatTime('yyyy-MM-dd', startDate);
-  endDate = echarts.format.formatTime('yyyy-MM-dd', endDate);
-
-  
-  function heatmap_width(months){             
-    var startDate = new Date();
-    var mill = startDate.setMonth((startDate.getMonth() - months));
-    var endDate = +new Date();
-    startDate = +new Date(mill);
-
-    endDate = echarts.format.formatTime('yyyy-MM-dd', endDate);
-    startDate = echarts.format.formatTime('yyyy-MM-dd', startDate);
-
-    var showmonth = [];
-    showmonth.push([
-        startDate,
-        endDate
-    ]);
-    return showmonth
-  };
-
-  function getRangeArr() {
-    const windowWidth = window.innerWidth;
-    if (windowWidth >= 600) {
-      return heatmap_width(12);
-    } else if (windowWidth >= 400) {
-      return heatmap_width(9);
-    } else {
-      return heatmap_width(6);
-    }
-  }
-
-  option = {
-    title: {
-        top: 0,
-        left: 'center',
-        text: '博客废话产量'
-    },
-    tooltip: {
-      hideDelay: 1000,
-      enterable: true,
-      formatter: function (p) {
-        const date = p.data[0];
-        const posts = dataMap.get(date);
-        var content = `${date}`;
-        for (const [i, post] of posts.entries()) {
-            content += "<br>";
-            var link = post.link;
-            var title = post.title;
-            var wordCount = (post.wordCount / 1000).toFixed(1);
-            content += `<a href="${link}" target="_blank">${title} | ${wordCount} 千字</a>`
-        }
-        return content;
-      }
-    },
-    visualMap: {
-        min: 0,
-        max: 10,
-        type: 'piecewise',
-        orient: 'horizontal',
-        left: 'center',
-        top: 30,
-        
-        inRange: {   
-          
-          color: ['#7aa8744c', '#7AA874' ] 
-        },
-        splitNumber: 4,
-        text: ['千字', ''],
-        showLabel: true,
-        itemGap: 20,
-    },
-    calendar: {
-        top: 80,
-        left: 20,
-        right: 4,
-        cellSize: ['auto', 12],
-        range: getRangeArr(),
-        itemStyle: {
-            color: '#F1F1F1',
-            borderWidth: 2.5,
-            borderColor: '#fff',
-        },
-        yearLabel: { show: false },
-        
-        splitLine: {
-          lineStyle: {
-            color: 'rgba(0, 0, 0, 0.0)',
-            
-            
-            
-            
-          }
-        }
-    },
-    series: {
-        type: 'heatmap',
-        coordinateSystem: 'calendar',
-        data: data,
-    }
-  };
-  myChart.setOption(option);
-  myChart.on('click', function(params) {
-    if (params.componentType === 'series') {
-      
-      const post = dataMap.get(params.data[0])[0];
-      const link = window.location.origin + post.link;
-      window.open(link, '_blank').focus();
-    }
-});
-</script> 
-
-<script>
-    
-const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
-    
-	const cssPath = "https://snackbs.asia/waifu/waifu.css"
-	const waifuTipsJsonPath = "https://snackbs.asia/waifu/waifu-tips.json"
-	const tipsJsPath = "https://snackbs.asia/waifu/waifu-tips.js"
-
-function loadExternalResource(url, type) {
-	return new Promise((resolve, reject) => {
-		let tag;
-
-		if (type === "css") {
-			tag = document.createElement("link");
-			tag.rel = "stylesheet";
-			tag.href = url;
-		}
-		else if (type === "js") {
-			tag = document.createElement("script");
-			tag.src = url;
-		}
-		if (tag) {
-			tag.onload = () => resolve(url);
-			tag.onerror = () => reject(url);
-			document.head.appendChild(tag);
-		}
-	});
-}
-
-
-if (screen.width >= 768) {
-	Promise.all([
-		loadExternalResource(cssPath, "css"),
-		loadExternalResource(live2d_path + "live2d.min.js", "js"),
-		loadExternalResource(tipsJsPath, "js")
-	]).then(() => {
-		
-		initWidget({
-			waifuPath: waifuTipsJsonPath,
-			
-			cdnPath: "https://cdn.jsdelivr.net/gh/snackbs/static-resource@V1.0.0",
-			tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
-		});
-	});
-}
-</script>
-<style>
-	@font-face {
-	  font-family: 'awa';
-	  src: url(https://snackbs.asia/font/JinzisheZhenhao-Bold.otf) format('truetype');
-	}
-  
-	:root {
-	  --base-font-family: 'awa';
-	  --code-font-family: 'awa';
-	}
-  </style>
-<script
-    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.1/js/nprogress.min.js"  
-    crossorigin="anonymous"
-></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.1/css/nprogress.css"
-    crossorigin="anonymous"
-/>
-<script>
-    NProgress.start();
-    document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") NProgress.inc();
-        if (document.readyState === "complete") NProgress.done();
-    });
 </script>
 
     </body>
