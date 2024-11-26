@@ -51,6 +51,23 @@ bilibili: &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/402971
         <description></description>
         </item>
         <item>
+        <title>更新日志</title>
+        <link>https://snackbs.asia/changelog/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://snackbs.asia/changelog/</guid>
+        <description>&lt;h3 id=&#34;001---tagchagngelog&#34;&gt;0.0.1 - Tag&amp;amp;Chagngelog
+&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241126-141553-v001&#34;&gt;snackbs 发布于 24.11.26 14:15:53 v0.0.1
+&lt;/h4&gt;&lt;p&gt;新增 &lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://snackbs.asia/categories-tags/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;分类&amp;amp;标签&lt;/a&gt;&lt;/em&gt; 以及 &lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://snackbs.asia/changelog&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;更新日志&lt;/a&gt;&lt;/em&gt; 界面！！！&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;000---new&#34;&gt;0.0.0 - New!
+&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241125-080000-v000&#34;&gt;snackbs 发布于 24.11.25 08:00:00 v0.0.0
+&lt;/h4&gt;&lt;p&gt;Snackbs&amp;rsquo;s Blog 正式建立！！！&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>归档</title>
         <link>https://snackbs.asia/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
