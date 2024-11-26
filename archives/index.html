@@ -6,31 +6,7 @@
 
 <link rel='canonical' href='https://snackbs.asia/archives/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e38d1ed03df5f0c1dfbb4aec63a8fd76ee02b6204dfdfcfeee4865a7ebf2097.css"><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-
-<script language="javascript"> 
-    var now = new Date();
-    function createtime(){
-        now.setTime(now.getTime()+250); 
-        var grt= new Date("2024/11/24 23:40:00"); 
-        days = (now - grt ) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;}
-        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if(String(snum).length ==1 ){snum = "0" + snum;}
-
-        document.getElementById("timeDate").innerHTML = "本站已稳定运行"+dnum+" 天 ";
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
-    }
-    setInterval("createtime()",250); 
-</script> 
-<meta property='og:title' content="归档">
+<link rel="stylesheet" href="/scss/style.min.3e38d1ed03df5f0c1dfbb4aec63a8fd76ee02b6204dfdfcfeee4865a7ebf2097.css"><meta property='og:title' content="归档">
 <meta property='og:description' content="">
 <meta property='og:url' content='https://snackbs.asia/archives/'>
 <meta property='og:site_name' content='Snackbs&#39;s Blog'>
@@ -355,7 +331,31 @@
     <section class="powerby">
         
             snackbs的一个小小的博客 <br/>
-        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+
+        <script language="javascript"> 
+            var now = new Date();
+            function createtime(){
+                now.setTime(now.getTime()+250); 
+                var grt= new Date("2024/11/24 23:40:00"); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24;
+                dnum = Math.floor(days);
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+                hnum = Math.floor(hours);
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;}
+                minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+                mnum = Math.floor(minutes);
+                if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                snum = Math.round(seconds);
+                if(String(snum).length ==1 ){snum = "0" + snum;}
+        
+                document.getElementById("timeDate").innerHTML = "本站已稳定运行"+dnum+" 天 ";
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+            }
+            setInterval("createtime()",250); 
+        </script>使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
