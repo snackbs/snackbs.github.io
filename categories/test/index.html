@@ -532,11 +532,7 @@ if (screen.width >= 768) {
 	}
   </style>
   
-    //增加加载进度条
-- 如果你希望取消完整性校验，可以直接删除 `integrity` 属性。以下是修改后的代码：
-
-```html
-
+//增加加载进度条
 <script
     src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.1/js/nprogress.min.js"
     crossorigin="anonymous"
@@ -549,7 +545,7 @@ if (screen.width >= 768) {
 <script>
     NProgress.start();
     document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "interactive") NProgress.inc();
         if (document.readyState === "complete") NProgress.done();
     });
 </script>
