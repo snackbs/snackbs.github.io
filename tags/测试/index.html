@@ -541,15 +541,17 @@ if (screen.width >= 768) {
   </style>
   
     //增加加载进度条
+- 如果你希望取消完整性校验，可以直接删除 `integrity` 属性。以下是修改后的代码：
+
+```html
+
 <script
-    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
-    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.1/js/nprogress.min.js"
     crossorigin="anonymous"
 ></script>
 <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
-    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.1/css/nprogress.css"
     crossorigin="anonymous"
 />
 <script>
