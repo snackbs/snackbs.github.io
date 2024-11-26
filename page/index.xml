@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 19:52:44 +0800</lastBuildDate><atom:link href="https://snackbs.asia/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 26 Nov 2024 19:56:01 +0800</lastBuildDate><atom:link href="https://snackbs.asia/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>分类&amp;标签</title>
         <link>https://snackbs.asia/categories-tags/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
@@ -24,9 +24,9 @@
         <description>&lt;h3 id=&#34;002---more-optimize&#34;&gt;0.0.2 - More Optimize!
 &lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241126-194658-v002&#34;&gt;snackbs 发布于 24.11.26 19:46:58 v0.0.2
 &lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;增加了 &lt;strong&gt;页面加载进度条&lt;/strong&gt; [页面加载进度更加明显了！]&lt;/li&gt;
-&lt;li&gt;优化了 &lt;strong&gt;滚动条&lt;/strong&gt; &lt;strong&gt;选中文本&lt;/strong&gt; 的样式&lt;/li&gt;
-&lt;li&gt;增加了主页右侧 &lt;strong&gt;搜索菜单&lt;/strong&gt; &lt;strong&gt;归档&lt;/strong&gt; &lt;strong&gt;标签云&lt;/strong&gt; 的动画 [动画的加入使得界面交互更加人性化了！]&lt;/li&gt;
+&lt;li&gt;增加了 &lt;em&gt;页面加载进度条&lt;/em&gt; [ 页面加载进度更加明显了！]&lt;/li&gt;
+&lt;li&gt;优化了 &lt;em&gt;滚动条&lt;/em&gt; &lt;em&gt;选中文本&lt;/em&gt; 的样式&lt;/li&gt;
+&lt;li&gt;增加了主页右侧 &lt;em&gt;搜索菜单&lt;/em&gt; &lt;em&gt;归档&lt;/em&gt; &lt;em&gt;标签云&lt;/em&gt; 的动画 [ 动画的加入使得界面交互更加人性化了！]&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;001---tagchagngelog&#34;&gt;0.0.1 - Tag&amp;amp;Chagngelog
