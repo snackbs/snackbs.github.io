@@ -261,132 +261,18 @@
     </button>
 </form>
 
-<div class="search-result">
-    <h3 class="search-result--title section-title"></h3>
-    <div class="search-result--list article-list--compact"></div>
-</div>
 
-<script>
-    window.searchResultTitleTemplate = "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
-</script><script type="text/javascript" src="/ts/search.js" defer></script>
-
-<footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2024 by snackbs
-    </section>
-    
-    <section class="powerby">
-        
-            snackbs的一个小小的博客 <br/>
-        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-
-        <script language="javascript"> 
-            var now = new Date();
-            function createtime(){
-                now.setTime(now.getTime()+250); 
-                var grt= new Date("2024/11/24 23:40:00"); 
-                days = (now - grt ) / 1000 / 60 / 60 / 24;
-                dnum = Math.floor(days);
-                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-                hnum = Math.floor(hours);
-                if(String(hnum).length ==1 ){hnum = "0" + hnum;}
-                minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-                mnum = Math.floor(minutes);
-                if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-                snum = Math.round(seconds);
-                if(String(snum).length ==1 ){snum = "0" + snum;}
-        
-                document.getElementById("timeDate").innerHTML = "本站已稳定运行"+dnum+" 天 ";
-                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
-            }
-            setInterval("createtime()",250); 
-        </script>
-                 
-
-    </section>
-</footer>
-
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script><script type="text/javascript" src="/ts/custom.ba5124b8f2f81d370a724b1dbe4d681e93cd5f3e0f95452dc6bed453b8b0c58c.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js
-    server="netease"
-    type="playlist"
-    autoplay=false 
-    fixed=true 
-    lrc-type=0
-    id="12907746607"> 
-</meting-js> 
-<script>
-    ap = null
-    Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
-        set: function(aplayer) {
-            ap=aplayer
-            ready();
-        }
-    });
-    isRecover = false;
-    function ready(){
-        ap.on('canplay', function () {
-            if(!isRecover){
-                if(localStorage.getItem("musicIndex") != null){
-                    musicIndex = localStorage.getItem("musicIndex");
-                    musicTime = localStorage.getItem("musicTime");
-                    if(ap.list.index != musicIndex){
-                        ap.list.switch(musicIndex);
-                    }else{
-                        ap.seek(musicTime);
-                        ap.play();
-                        localStorage.clear();
-                        isRecover = true;
-                    }
-                }else{
-                    isRecover = true;
-                }
-            }
-        });
-    }
-    window.onbeforeunload = function(event) {
-        if(!ap.audio.paused){
-            musicIndex = ap.list.index;
-            musicTime = ap.audio.currentTime;
-            localStorage.setItem("musicIndex",musicIndex);
-            localStorage.setItem("musicTime",musicTime);
-        }
-    };
-</script>
-
-<div id="heatmap" style="
-  max-width: 600px;
-  height: 180px;
-  padding: 2px;
-  text-align: center;
-  margin: auto"
-></div>
+<div id="heatmap" style="max-width: 600px; height: 180px; padding: 2px; text-align: center; margin: auto;"></div>
 <script src="https://npm.elemecdn.com/echarts@5.3.0/dist/echarts.min.js"></script>
 <script type="text/javascript">
+  
+  function getCSSVariableValue(variableName) {
+    return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
+  }
+
+  
+  var colorP = getCSSVariableValue('--color-p');
+
   var chartDom = document.getElementById('heatmap');
   var myChart = echarts.init(chartDom);
   window.onresize = function() {
@@ -402,18 +288,20 @@
   
   var dataMap = new Map();
   
-    var key = "2024-11-25";
+    var key = '2024-11-25';
     var value = dataMap.get(key);
     var wordCount =  273 ;
-    var link = "/p/hello-word/";
-    var title = "Hello Word";
+    var link = '\/p\/hello-word\/';
+    var title = 'Hello Word';
     
     
     if (value == null) {
       dataMap.set(key, [{wordCount, link, title}]);
     } else {
       value.push({wordCount, link, title});
-    }var data = [];
+    }
+
+  var data = [];
   
   for (const [key, value] of dataMap.entries()) {
     var sum = 0;
@@ -538,8 +426,128 @@
       const link = window.location.origin + post.link;
       window.open(link, '_blank').focus();
     }
-});
-</script> 
+  });
+
+  
+  console.log('CSS Variable --color-p:', colorP);
+</script>
+
+<div class="search-result">
+    <h3 class="search-result--title section-title"></h3>
+    <div class="search-result--list article-list--compact"></div>
+</div>
+
+<script>
+    window.searchResultTitleTemplate = "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
+</script><script type="text/javascript" src="/ts/search.js" defer></script>
+
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 by snackbs
+    </section>
+    
+    <section class="powerby">
+        
+            snackbs的一个小小的博客 <br/>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+
+        <script language="javascript"> 
+            var now = new Date();
+            function createtime(){
+                now.setTime(now.getTime()+250); 
+                var grt= new Date("2024/11/24 23:40:00"); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24;
+                dnum = Math.floor(days);
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+                hnum = Math.floor(hours);
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;}
+                minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+                mnum = Math.floor(minutes);
+                if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                snum = Math.round(seconds);
+                if(String(snum).length ==1 ){snum = "0" + snum;}
+        
+                document.getElementById("timeDate").innerHTML = "本站已稳定运行"+dnum+" 天 ";
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+            }
+            setInterval("createtime()",250); 
+        </script>
+                 
+
+    </section>
+</footer>
+
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script><script type="text/javascript" src="/ts/custom.ba5124b8f2f81d370a724b1dbe4d681e93cd5f3e0f95452dc6bed453b8b0c58c.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<meting-js
+    server="netease"
+    type="playlist"
+    autoplay=false 
+    fixed=true 
+    lrc-type=0
+    id="12907746607"> 
+</meting-js> 
+<script>
+    ap = null
+    Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
+        set: function(aplayer) {
+            ap=aplayer
+            ready();
+        }
+    });
+    isRecover = false;
+    function ready(){
+        ap.on('canplay', function () {
+            if(!isRecover){
+                if(localStorage.getItem("musicIndex") != null){
+                    musicIndex = localStorage.getItem("musicIndex");
+                    musicTime = localStorage.getItem("musicTime");
+                    if(ap.list.index != musicIndex){
+                        ap.list.switch(musicIndex);
+                    }else{
+                        ap.seek(musicTime);
+                        ap.play();
+                        localStorage.clear();
+                        isRecover = true;
+                    }
+                }else{
+                    isRecover = true;
+                }
+            }
+        });
+    }
+    window.onbeforeunload = function(event) {
+        if(!ap.audio.paused){
+            musicIndex = ap.list.index;
+            musicTime = ap.audio.currentTime;
+            localStorage.setItem("musicIndex",musicIndex);
+            localStorage.setItem("musicTime",musicTime);
+        }
+    };
+</script>
 
 <script>
     
