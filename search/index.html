@@ -260,9 +260,13 @@
 
     </button>
 </form>
-
-
-<div id="heatmap" style="max-width: 600px; height: 180px; padding: 2px; text-align: center; margin: auto;"></div>
+<div id="heatmap" style="
+  max-width: 600px;
+  height: 180px;
+  padding: 2px;
+  text-align: center;
+  margin: auto"
+></div>
 <script src="https://npm.elemecdn.com/echarts@5.3.0/dist/echarts.min.js"></script>
 <script type="text/javascript">
   var chartDom = document.getElementById('heatmap');
@@ -280,20 +284,18 @@
   
   var dataMap = new Map();
   
-    var key = '2024-11-25';
+    var key = "2024-11-25";
     var value = dataMap.get(key);
     var wordCount =  273 ;
-    var link = '\/p\/hello-word\/';
-    var title = 'Hello Word';
+    var link = "/p/hello-word/";
+    var title = "Hello Word";
     
     
     if (value == null) {
       dataMap.set(key, [{wordCount, link, title}]);
     } else {
       value.push({wordCount, link, title});
-    }
-
-  var data = [];
+    }var data = [];
   
   for (const [key, value] of dataMap.entries()) {
     var sum = 0;
@@ -418,16 +420,15 @@
       const link = window.location.origin + post.link;
       window.open(link, '_blank').focus();
     }
-  });
-</script>
-
+});
+</script> 
 <div class="search-result">
-    <h3 class="search-result--title section-title"></h3>
-    <div class="search-result--list article-list--compact"></div>
+  <h3 class="search-result--title section-title"></h3>
+  <div class="search-result--list article-list--compact"></div>
 </div>
 
 <script>
-    window.searchResultTitleTemplate = "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
+  window.searchResultTitleTemplate = "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
 </script><script type="text/javascript" src="/ts/search.js" defer></script>
 
 <footer class="site-footer">
