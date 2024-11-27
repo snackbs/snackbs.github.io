@@ -265,14 +265,6 @@
 <div id="heatmap" style="max-width: 600px; height: 180px; padding: 2px; text-align: center; margin: auto;"></div>
 <script src="https://npm.elemecdn.com/echarts@5.3.0/dist/echarts.min.js"></script>
 <script type="text/javascript">
-  
-  function getCSSVariableValue(variableName) {
-    return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
-  }
-
-  
-  var colorP = getCSSVariableValue('--color-p');
-
   var chartDom = document.getElementById('heatmap');
   var myChart = echarts.init(chartDom);
   window.onresize = function() {
@@ -427,9 +419,6 @@
       window.open(link, '_blank').focus();
     }
   });
-
-  
-  console.log('CSS Variable --color-p:', colorP);
 </script>
 
 <div class="search-result">
