@@ -49,9 +49,9 @@ bilibili: &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/402971
         <description>&lt;h3 id=&#34;003-1-some-fixes-and-new-features&#34;&gt;0.0.3-1 Some Fixes And New Features!
 &lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241128-142304-v003-1&#34;&gt;snackbs 发布于 24.11.28 14:23:04 v0.0.3-1
 &lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;修复：&lt;em&gt;网页右下角Live2D模型不显示问题&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;删除：&lt;em&gt;页面底部页脚部分内容&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;新功能：&lt;em&gt;页脚增加站点运行时间&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;修复：&lt;strong&gt;网页右下角Live2D模型不显示问题&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;删除：&lt;strong&gt;页面底部页脚部分内容&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;新功能：&lt;strong&gt;页脚增加站点运行时间、云存储服务提供商及备案信息[瞎编的]&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;003---more-optimize-for-two&#34;&gt;0.0.3 - More Optimize For Two!
