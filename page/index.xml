@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 21:13:43 +0800</lastBuildDate><atom:link href="https://snackbs.asia/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 28 Nov 2024 14:29:38 +0800</lastBuildDate><atom:link href="https://snackbs.asia/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>分类&amp;标签</title>
         <link>https://snackbs.asia/categories-tags/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
@@ -21,7 +21,15 @@
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
         <guid>https://snackbs.asia/changelog/</guid>
-        <description>&lt;h3 id=&#34;003---more-optimize-for-two&#34;&gt;0.0.3 - More Optimize For Two!
+        <description>&lt;h3 id=&#34;003-1-some-fixes-and-new-features&#34;&gt;0.0.3-1 Some Fixes And New Features!
+&lt;/h3&gt;&lt;p&gt;snackbs 发布于 24.11.28 14:23:04 v0.0.3-1&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修复：&lt;em&gt;网页右下角Live2D模型不显示问题&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;删除：&lt;em&gt;页面底部页脚部分内容&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;新功能：&lt;em&gt;页脚增加站点运行时间&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;003---more-optimize-for-two&#34;&gt;0.0.3 - More Optimize For Two!
 &lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241126-205443-v003&#34;&gt;snackbs 发布于 24.11.26 20:54:43 v0.0.3
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;一些调整： &lt;em&gt;主页布局间距调整&lt;/em&gt;&lt;/li&gt;
