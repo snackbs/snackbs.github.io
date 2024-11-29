@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Fri, 29 Nov 2024 12:42:26 +0000</lastBuildDate><atom:link href="https://snackbs.asia/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 29 Nov 2024 12:45:52 +0000</lastBuildDate><atom:link href="https://snackbs.asia/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo博客搭建日记 #1 - 初步搭建并引入Stack主题</title>
         <link>https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0-%231-%E5%88%9D%E6%AD%A5%E6%90%AD%E5%BB%BA%E5%B9%B6%E5%BC%95%E5%85%A5stack%E4%B8%BB%E9%A2%98/</link>
         <pubDate>Fri, 29 Nov 2024 19:01:10 +0800</pubDate>
@@ -21,10 +21,14 @@
 &lt;p&gt;前往 [&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo Github Releases&lt;/a&gt;]选择最新发行版下载，下载完成后进行解压操作即可&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[!NOTE]&lt;/p&gt;
+
+&lt;div class=&#34;notice notice-info&#34; &gt;
+    &lt;div class=&#34;notice-title&#34;&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;GitHub的访问取决于你当地的网络情况，会有很大概率连接不上，请确保你具备魔法上网的能力，当然，这里也提供了Hugo的下载链接[版本为 &lt;em&gt;&lt;strong&gt;v0.139.2&lt;/strong&gt;&lt;/em&gt; ，可自行按需下载]&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://4xzjh6-my.sharepoint.com/:u:/g/personal/snackbs_onekrincraft_cn/EZc0QBr9z3NHuqYTjjliBDgBUXtFZQtL64XzUD-4ZWJrIw?e=RlSz8D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;点此跳转Onedrive下载&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/div&gt;
+
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;
