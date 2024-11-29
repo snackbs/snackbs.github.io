@@ -319,12 +319,12 @@
     
     <section class="powerby">
         
-        <p style="line-height: 1.2;">snackbs的一个小小的博客</p>
-        <p style="line-height: 1.2;">OneDrive提供云存储服务</p>
-        <p style="line-height: 1.2;">萌ICP备20241124号</p>
-
+        <p style="line-height: 1.0;">snackbs的一个小小的博客</p>
+        <p style="line-height: 1.0;">OneDrive提供云存储服务</p>
+        <p style="line-height: 1.0;">萌ICP备20241124号</p>
+    
         <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-
+    
         <script language="javascript"> 
             var now = new Date();
             function createtime(){
@@ -341,14 +341,14 @@
                 seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
                 snum = Math.round(seconds);
                 if(String(snum).length ==1 ){snum = "0" + snum;}
-        
+            
                 document.getElementById("timeDate").innerHTML = "本站已稳定运行"+dnum+" 天 ";
                 document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
             }
             setInterval("createtime()",250); 
         </script>
     </section>
-</footer>
+    </footer>
 
             </main>
         </div>
