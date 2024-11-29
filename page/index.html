@@ -323,37 +323,17 @@
         <p style="line-height: 0.7; font-size: 13px; font-weight: bold; color: white;">OneDrive提供云存储服务</p>
         <p style="line-height: 0.7; font-size: 13px; font-weight: bold; color: white;">萌ICP备20241124号</p>
     
-        <span id="timeDate" style="line-height: 1.0 !important;">载入天数...</span>
-        <span id="times" style="line-height: 1.0 !important;">载入时分秒...</span>
-    
-        <script language="javascript"> 
-            var now = new Date();
-            function createtime(){
-                now.setTime(now.getTime()+250); 
-                var grt= new Date("2024/11/24 23:40:00"); 
-                days = (now - grt ) / 1000 / 60 / 60 / 24;
-                dnum = Math.floor(days);
-                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-                hnum = Math.floor(hours);
-                if(String(hnum).length ==1 ){hnum = "0" + hnum;}
-                minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-                mnum = Math.floor(minutes);
-                if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-                snum = Math.round(seconds);
-                if(String(snum).length ==1 ){snum = "0" + snum;}
-            
-                document.getElementById("timeDate").innerHTML = "本站已稳定运行"+dnum+" 天 ";
-                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
-            }
-            setInterval("createtime()",250); 
-        </script>
+        
     </section>
 
     
     <section class="count_info">
         <div>
-            
+            运行时间：
+            <span id="ds" class="running-days">0</span>天
+            <span id="hs" class="running-days">0</span>小时
+            <span id="ms" class="running-days">0</span>分钟
+            <span id="ss" class="running-days">0</span>秒
         </div>
         <div>
             <p style="line-height: 0.7; font-size: 12px; font-weight: bold; color: #FFFFFFB3;">
@@ -381,6 +361,32 @@
             </p>
         </div>
     </section>
+
+    
+    <script>
+    function updateRunningTime() {
+        const startDate = '2024/11/24 23:40:00'; 
+        const start = new Date(startDate);
+        const now = new Date();
+        const timeDifference = now - start;
+
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        document.getElementById('ds').textContent = days;
+        document.getElementById('hs').textContent = hours;
+        document.getElementById('ms').textContent = minutes;
+        document.getElementById('ss').textContent = seconds;
+    }
+
+    
+    updateRunningTime();
+
+    
+    setInterval(updateRunningTime, 1000);
+    </script>
 </footer>
 
             </main>
