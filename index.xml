@@ -16,18 +16,21 @@
 &lt;/h2&gt;&lt;p&gt;在一切的一切开始之前，你得先需要准备好搭建所需的环境，这样你才可以搭建你的Blog&lt;/p&gt;
 &lt;h3 id=&#34;11--下载-hugo&#34;&gt;1.1  下载 Hugo
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;前往 [&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Hugo Github Releases&lt;/a&gt;]选择最新发行版下载，下载完成后进行解压操作即可&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Windows下载的版本为：&lt;strong&gt;hugo_extended_xxxxx_windows_amd64.zip&lt;/strong&gt;&lt;/p&gt;
-&lt;iframe src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRVJGb0E0d1ZST1ZLaF8wRVZXdmFfUmdCRlVEQjNmc3p0SERoTkJWTGxwWDZMQT9lPW5aamhURA.png&#34;&gt;&lt;/iframe&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;step-02---搭建blog&#34;&gt;Step 02 - 搭建Blog
-&lt;/h2&gt;&lt;/li&gt;
+&lt;li&gt;前往 [&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo Github Releases&lt;/a&gt;]选择最新发行版下载，下载完成后进行解压操作即可&lt;/li&gt;
+&lt;li&gt;Windows下载的版本为：&lt;strong&gt;hugo_extended_xxxxx_windows_amd64.zip&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
+&lt;p&gt;&lt;img src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRVJGb0E0d1ZST1ZLaF8wRVZXdmFfUmdCRlVEQjNmc3p0SERoTkJWTGxwWDZMQT9lPW5aamhURA.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;step-02---搭建博客&#34;&gt;Step 02 - 搭建博客
+&lt;/h2&gt;&lt;h3 id=&#34;21-创建博客&#34;&gt;2.1 创建博客
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>Hello Word</title>
