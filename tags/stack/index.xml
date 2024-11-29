@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Fri, 29 Nov 2024 13:12:20 +0000</lastBuildDate><atom:link href="https://snackbs.asia/tags/stack/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 29 Nov 2024 14:02:49 +0000</lastBuildDate><atom:link href="https://snackbs.asia/tags/stack/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo博客搭建日记 #1 - 初步搭建并引入Stack主题</title>
         <link>https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0-%231-%E5%88%9D%E6%AD%A5%E6%90%AD%E5%BB%BA%E5%B9%B6%E5%BC%95%E5%85%A5stack%E4%B8%BB%E9%A2%98/</link>
         <pubDate>Fri, 29 Nov 2024 19:01:10 +0800</pubDate>
@@ -41,7 +41,40 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;step-02---搭建博客&#34;&gt;Step 02 - 搭建博客
 &lt;/h2&gt;&lt;h3 id=&#34;21-创建博客&#34;&gt;2.1 创建博客
-&lt;/h3&gt;</description>
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在一个你心仪的位置新建一个文件夹并将解压出来的&lt;u&gt;&lt;strong&gt;hugo.exe&lt;/strong&gt;&lt;/u&gt;移动至此文件夹，随后在该文件夹的地址栏输入&lt;code&gt;cmd&lt;/code&gt;后按下&lt;code&gt;Enter&lt;/code&gt;键唤起命令指示符&lt;img src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRWNFTDk5dE9LdTlLdG5WdnkzU3k0dDhCeTZra0dOR3RVVEJ6eWdiMUtfNWxaUT9lPVlKS3VQSg.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在弹出的命令指示符窗口中输入&lt;code&gt;hugo new site xxx(文件夹名字)&lt;/code&gt;创建你的hugo博客文件夹&lt;img src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRVdmOEg3NGE1X0ZJdEtvNzF4c3JscDRCVld0V0UtcmdsUV9fcDdnSkhmbVRBQQ.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建完成后输入命令&lt;code&gt;cd xxx(建立的文件夹名称)&lt;/code&gt;切换目录，并将**&lt;u&gt;hugo.exe&lt;/u&gt;**复制至该文件夹下&lt;img src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRVZlczRfaF8yODFOcG5UWURaRlFfTmNCMk9mNEFtQnpXUEMyX0JJQ3paaXBJQT9lPVJTd3NEOQ.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
         </item>
         
     </channel>
