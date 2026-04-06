@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Fri, 29 Nov 2024 18:47:13 +0800</lastBuildDate><atom:link href="https://snackbs.asia/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 07 Apr 2026 01:03:45 +0800</lastBuildDate><atom:link href="https://snackbs.asia/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>分类&amp;标签</title>
         <link>https://snackbs.asia/categories-tags/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
@@ -21,25 +21,33 @@
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
         <guid>https://snackbs.asia/changelog/</guid>
-        <description>&lt;h3 id=&#34;004---major--update&#34;&gt;0.0.4 - Major  Update!
-&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241129-184052-v004&#34;&gt;snackbs 发布于 24.11.29 18:40:52 v0.0.4
-&lt;/h4&gt;&lt;ol&gt;
+        <description>&lt;h3 id=&#34;005---new-feature-support&#34;&gt;0.0.5 - New feature support
+&lt;/h3&gt;&lt;p&gt;**snackbs 发布于 26.04.07 00.36.56 v0.0.5&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;优化：&lt;em&gt;&lt;strong&gt;自动构建功能将使用&lt;/strong&gt;&lt;/em&gt;&lt;code&gt;node.js 20&lt;/code&gt;&lt;em&gt;&lt;strong&gt;更新至&lt;/strong&gt;&lt;/em&gt;&lt;code&gt;node.js 24&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;优化：&lt;em&gt;&lt;strong&gt;优化更新日志页面呈现内容&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;修复：&lt;em&gt;&lt;strong&gt;版权时间仍为©2024-2025问题&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;004---major--update&#34;&gt;0.0.4 - Major  Update!
+&lt;/h3&gt;&lt;p&gt;**snackbs 发布于 24.11.29 18:40:52 v0.0.4&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;新功能：&lt;em&gt;&lt;strong&gt;文章/总字数统计&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;网站访问量统计(&lt;u&gt;#3&lt;/u&gt;)&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;优化：&lt;em&gt;&lt;strong&gt;页脚行间距缩短/美观&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;修复：&lt;em&gt;&lt;strong&gt;站点运行时间所占行间距过大问题&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;003-1---some-fixes-and-new-features&#34;&gt;0.0.3-1 - Some Fixes And New Features!
-&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241128-142304-v003-1&#34;&gt;snackbs 发布于 24.11.28 14:23:04 v0.0.3-1
-&lt;/h4&gt;&lt;ol&gt;
+&lt;/h3&gt;&lt;p&gt;**snackbs 发布于 24.11.28 14:23:04 v0.0.3-1&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;修复：&lt;em&gt;&lt;strong&gt;网页右下角Live2D模型不显示问题&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;删除：&lt;em&gt;&lt;strong&gt;页面底部页脚部分内容&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;新功能：&lt;em&gt;&lt;strong&gt;页脚增加站点运行时间、云存储服务提供商及备案信息[瞎编的]&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;003---more-optimize-for-two&#34;&gt;0.0.3 - More Optimize For Two!
-&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241126-205443-v003&#34;&gt;snackbs 发布于 24.11.26 20:54:43 v0.0.3
-&lt;/h4&gt;&lt;ol&gt;
+&lt;/h3&gt;&lt;p&gt;**snackbs 发布于 24.11.26 20:54:43 v0.0.3&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;一些调整： &lt;em&gt;主页布局间距调整&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;一些功能性添加： &lt;em&gt;首页欢迎板块&lt;/em&gt; &lt;em&gt;添加语法高级键盘模式语法示例&lt;code&gt;&amp;lt;kbd&amp;gt;CTRL&amp;lt;/kbd&amp;gt; + &amp;lt;kbd&amp;gt;C&amp;lt;/kbd&amp;gt;&lt;/code&gt;预览： &lt;kbd&gt;CTRL&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;&lt;/em&gt;  &lt;em&gt;显示语言和复制按钮[下方代码块实示例]&lt;/em&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -132,22 +140,22 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;002---more-optimize&#34;&gt;0.0.2 - More Optimize!
-&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241126-194658-v002&#34;&gt;snackbs 发布于 24.11.26 19:46:58 v0.0.2
-&lt;/h4&gt;&lt;ol&gt;
+&lt;/h3&gt;&lt;p&gt;**snackbs 发布于 24.11.26 19:46:58 v0.0.2&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;增加了 &lt;em&gt;页面加载进度条&lt;/em&gt; [ 页面加载进度更加明显了！]&lt;/li&gt;
 &lt;li&gt;优化了 &lt;em&gt;滚动条&lt;/em&gt; &lt;em&gt;选中文本&lt;/em&gt; 的样式&lt;/li&gt;
 &lt;li&gt;增加了主页右侧 &lt;em&gt;搜索菜单&lt;/em&gt; &lt;em&gt;归档&lt;/em&gt; &lt;em&gt;标签云&lt;/em&gt; 的动画 [ 动画的加入使得界面交互更加人性化了！]&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;001---tagchagngelog&#34;&gt;0.0.1 - Tag&amp;amp;Chagngelog
-&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241126-141553-v001&#34;&gt;snackbs 发布于 24.11.26 14:15:53 v0.0.1
-&lt;/h4&gt;&lt;p&gt;新增 &lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://snackbs.asia/categories-tags/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/h3&gt;&lt;p&gt;**snackbs 发布于 24.11.26 14:15:53 v0.0.1&lt;/p&gt;
+&lt;p&gt;新增 &lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://snackbs.asia/categories-tags/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;分类&amp;amp;标签&lt;/a&gt;&lt;/em&gt; 以及 &lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://snackbs.asia/changelog&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;更新日志&lt;/a&gt;&lt;/em&gt; 界面！！！&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;000---new&#34;&gt;0.0.0 - New!
-&lt;/h3&gt;&lt;h4 id=&#34;snackbs-发布于-241125-080000-v000&#34;&gt;snackbs 发布于 24.11.25 08:00:00 v0.0.0
-&lt;/h4&gt;&lt;p&gt;Snackbs&amp;rsquo;s Blog 正式建立！！！&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;**snackbs 发布于 24.11.25 08:00:00 v0.0.0&lt;/p&gt;
+&lt;p&gt;Snackbs&amp;rsquo;s Blog 正式建立！！！&lt;/p&gt;
 </description>
         </item>
         <item>
