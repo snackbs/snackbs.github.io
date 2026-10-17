@@ -7,28 +7,25 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Sat, 17 Oct 2026 19:37:35 +0000</lastBuildDate><atom:link href="https://snackbs.asia/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 17 Oct 2026 20:13:40 +0000</lastBuildDate><atom:link href="https://snackbs.asia/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo博客搭建日记 #1 - 初步搭建并引入Stack主题</title>
         <link>https://snackbs.asia/p/hugo-setup-1/</link>
         <pubDate>Fri, 29 Nov 2024 19:01:10 +0800</pubDate>
         
         <guid>https://snackbs.asia/p/hugo-setup-1/</guid>
         <description>&lt;h2 id=&#34;step-01---搭建环境准备&#34;&gt;Step 01 - 搭建环境准备
-&lt;/h2&gt;&lt;p&gt;在一切的一切开始之前，你得先需要准备好搭建所需的环境，这样你才可以搭建你的Blog&lt;/p&gt;
-&lt;h3 id=&#34;11--下载-hugo&#34;&gt;1.1  下载 Hugo
+&lt;/h2&gt;&lt;p&gt;开始之前先把工具准备好。这套流程只依赖 Hugo 一个可执行文件，不需要安装 Node.js，也不需要数据库，整个过程都是本地生成静态文件。&lt;/p&gt;
+&lt;h3 id=&#34;11-下载-hugo&#34;&gt;1.1 下载 Hugo
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;前往 [&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Hugo Github Releases&lt;/a&gt;]选择最新发行版下载，下载完成后进行解压操作即可&lt;/p&gt;
+&lt;p&gt;打开 Hugo 的官方网站的 Releases 页面，选择与你的操作系统匹配的发行版下载，解压后得到一个可执行文件即可。&lt;/p&gt;
 
 &lt;div class=&#34;notice notice-info&#34; &gt;
-    &lt;div class=&#34;notice-title&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;icon notice-icon&#34; viewBox=&#34;0 0 512 512&#34; fill=&#34;#705943&#34;&gt;&lt;path d=&#34;M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z&#34;/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;GitHub的访问取决于你当地的网络情况，会有很大概率连接不上，请确保你具备魔法上网的能力，当然，这里也提供了Hugo的下载链接[版本为 &lt;em&gt;&lt;strong&gt;v0.139.2&lt;/strong&gt;&lt;/em&gt; ，可自行按需下载]&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://4xzjh6-my.sharepoint.com/:u:/g/personal/snackbs_onekrincraft_cn/EZc0QBr9z3NHuqYTjjliBDgBUXtFZQtL64XzUD-4ZWJrIw?e=RlSz8D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;点此跳转Onedrive下载 &lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&#34;notice-title&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;icon notice-icon&#34; viewBox=&#34;0 0 512 512&#34; fill=&#34;#705943&#34;&gt;&lt;path d=&#34;M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z&#34;/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;Hugo 分为 &lt;strong&gt;standard&lt;/strong&gt; 与 &lt;strong&gt;extended&lt;/strong&gt; 两个版本。本站使用了 Stack 主题，主题里的样式文件需要 extended 版本才能正确编译，所以下载时请认准 extended。&lt;/p&gt;&lt;/div&gt;
 
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Windows下载的版本为：&lt;strong&gt;hugo_extended_xxxx_windows_amd64.zip&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Windows 下载的版本文件名形如：&lt;strong&gt;hugo_extended_xxxx_windows_amd64.zip&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://snackbs.asia/p/hugo-setup-1/1.png&#34;
@@ -43,11 +40,12 @@
 		data-flex-basis=&#34;5835px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;p&gt;解压之后你会得到一个单独的 &lt;code&gt;hugo.exe&lt;/code&gt;，把它放在一个固定目录里，后面所有命令都在这个目录下执行。&lt;/p&gt;
 &lt;h2 id=&#34;step-02---搭建博客&#34;&gt;Step 02 - 搭建博客
-&lt;/h2&gt;&lt;h3 id=&#34;21-创建博客&#34;&gt;2.1 创建博客
+&lt;/h2&gt;&lt;h3 id=&#34;21-创建站点&#34;&gt;2.1 创建站点
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;在一个你心仪的位置新建一个文件夹并将解压出来的&lt;u&gt;&lt;strong&gt;hugo.exe&lt;/strong&gt;&lt;/u&gt;移动至此文件夹，随后在该文件夹的地址栏输入&lt;code&gt;cmd&lt;/code&gt;后按下&lt;code&gt;Enter&lt;/code&gt;键唤起命令指示符&lt;img src=&#34;https://snackbs.asia/p/hugo-setup-1/2.png&#34;
+&lt;p&gt;在一个你心仪的位置新建一个文件夹，把解压出来的 &lt;u&gt;&lt;strong&gt;hugo.exe&lt;/strong&gt;&lt;/u&gt; 移动进去，然后在该文件夹的地址栏输入 &lt;code&gt;cmd&lt;/code&gt; 并按回车，唤起命令提示符&lt;img src=&#34;https://snackbs.asia/p/hugo-setup-1/2.png&#34;
 	width=&#34;824&#34;
 	height=&#34;275&#34;
 	srcset=&#34;https://snackbs.asia/p/hugo-setup-1/2_hu11351702785715535157.png 480w, https://snackbs.asia/p/hugo-setup-1/2_hu18302373563454886018.png 1024w&#34;
@@ -61,7 +59,7 @@
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;在弹出的命令指示符窗口中输入&lt;code&gt;hugo new site xxx(文件夹名字)&lt;/code&gt;创建你的hugo博客文件夹&lt;img src=&#34;https://snackbs.asia/p/hugo-setup-1/3.png&#34;
+&lt;p&gt;在弹出的命令提示符窗口中输入 &lt;code&gt;hugo new site xxx&lt;/code&gt;（xxx 换成你的站点文件夹名），创建站点目录&lt;img src=&#34;https://snackbs.asia/p/hugo-setup-1/3.png&#34;
 	width=&#34;749&#34;
 	height=&#34;245&#34;
 	srcset=&#34;https://snackbs.asia/p/hugo-setup-1/3_hu3459085125864519756.png 480w, https://snackbs.asia/p/hugo-setup-1/3_hu6216557019767178758.png 1024w&#34;
@@ -75,7 +73,7 @@
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;创建完成后输入命令&lt;code&gt;cd xxx(建立的文件夹名称)&lt;/code&gt;切换目录，并将**&lt;u&gt;hugo.exe&lt;/u&gt;**复制至该文件夹下&lt;img src=&#34;https://snackbs.asia/p/hugo-setup-1/4.png&#34;
+&lt;p&gt;进入刚创建好的目录，输入 &lt;code&gt;cd xxx&lt;/code&gt; 切换过去，并把 &lt;strong&gt;&lt;u&gt;hugo.exe&lt;/u&gt;&lt;/strong&gt; 复制一份到该目录下&lt;img src=&#34;https://snackbs.asia/p/hugo-setup-1/4.png&#34;
 	width=&#34;985&#34;
 	height=&#34;518&#34;
 	srcset=&#34;https://snackbs.asia/p/hugo-setup-1/4_hu14139205128459157288.png 480w, https://snackbs.asia/p/hugo-setup-1/4_hu2295295909376307199.png 1024w&#34;
@@ -88,34 +86,100 @@
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-        </item>
-        <item>
-        <title>Hello Word</title>
-        <link>https://snackbs.asia/p/hello-word/</link>
-        <pubDate>Mon, 25 Nov 2024 08:52:33 +0800</pubDate>
-        
-        <guid>https://snackbs.asia/p/hello-word/</guid>
-        <description>&lt;img src="https://snackbs.asia/p/hello-word/111987496.png" alt="Featured image of post Hello Word" /&gt;&lt;h1 id=&#34;hello-word&#34;&gt;Hello Word
-&lt;/h1&gt;&lt;p&gt;此文章为snackbs小站建立后的第一篇纪念文章，它将永久保存，直至很久很久~~~&lt;br&gt;
-This article is the first commemorative post after the establishment of snackbs小站. It will be permanently preserved, until a very long time~~~&lt;/p&gt;
-&lt;h1 id=&#34;鸣谢&#34;&gt;鸣谢
-&lt;/h1&gt;&lt;p&gt;Snackbs &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; 全部搭建工作&lt;br&gt;
-Hugo静态站点生成器 &amp;mdash;&amp;mdash;- 提供了搭建底层 &lt;br&gt;
-由Jimmy设计的Stack主题 &amp;mdash; 提供了blog的主题&lt;/p&gt;
-&lt;h1 id=&#34;blog所使用插件&#34;&gt;Blog所使用插件
-&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;Aplayer &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; 使得blog可以播放音乐！&lt;/li&gt;
-&lt;li&gt;Live2d-widget &amp;mdash;&amp;mdash;&amp;ndash; 使得blog有了一只可爱的看板娘！&lt;br&gt;
-[待后续更新]………………&lt;/li&gt;
+&lt;p&gt;到这里，一个空站点就已经建好了。此时目录里会有 &lt;code&gt;archetypes&lt;/code&gt;、&lt;code&gt;assets&lt;/code&gt;、&lt;code&gt;content&lt;/code&gt;、&lt;code&gt;layouts&lt;/code&gt;、&lt;code&gt;static&lt;/code&gt; 等文件夹，以及一个 &lt;code&gt;hugo.yaml&lt;/code&gt; 配置文件。&lt;/p&gt;
+&lt;h3 id=&#34;22-引入-stack-主题&#34;&gt;2.2 引入 Stack 主题
+&lt;/h3&gt;&lt;p&gt;Stack 是一款以阅读体验见长的 Hugo 主题，自带深色模式、目录、标签与归档页面，适合用来写技术笔记。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在站点根目录下创建 &lt;code&gt;themes&lt;/code&gt; 文件夹，把主题文件放进 &lt;code&gt;themes/hugo-theme-stack&lt;/code&gt; 目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 &lt;code&gt;hugo.yaml&lt;/code&gt; 中指定主题：&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;blog搭建教程来源&#34;&gt;Blog搭建教程来源
-&lt;/h1&gt;&lt;p&gt;BiliBili by Letere-莱特雷&amp;ndash;非常感谢提供了搭建教程 &lt;br&gt;
-主页：https://letere-gzj.github.io/hugo-stack/&lt;br&gt;
-bilibili: &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/402971365&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://space.bilibili.com/402971365&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;theme&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;hugo-theme-stack&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;我的小站&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;baseurl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;https://example.com&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;DefaultContentLanguage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Zh-CN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;hasCJKLanguage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;把主题自带的 &lt;code&gt;config.yaml&lt;/code&gt; 示例内容合并进站点根目录的 &lt;code&gt;hugo.yaml&lt;/code&gt;，再按需修改站点标题、副标题、头像、导航菜单等字段。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;23-写第一篇文章&#34;&gt;2.3 写第一篇文章
+&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;content/post/&lt;/code&gt; 下新建一个目录作为文章的资源目录，例如 &lt;code&gt;content/post/hello-world/&lt;/code&gt;，在其中新建 &lt;code&gt;index.md&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title = &amp;#39;第一篇文章&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date = 2024-11-29T19:00:00+08:00
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;draft = false
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tags = [&amp;#34;随笔&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;categories = [&amp;#34;生活&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;这里写正文。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;图片也可以直接放在同一个目录里，正文中用相对路径引用，Hugo 会自动处理尺寸与压缩：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;![](cover.png)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;24-本地预览&#34;&gt;2.4 本地预览
+&lt;/h3&gt;&lt;p&gt;在站点根目录执行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;终端会给出一个本地地址，浏览器打开即可实时预览。修改文件保存后页面会自动刷新，写完再按 &lt;code&gt;Ctrl + C&lt;/code&gt; 停止。&lt;/p&gt;
+&lt;h3 id=&#34;25-生成静态文件&#34;&gt;2.5 生成静态文件
+&lt;/h3&gt;&lt;p&gt;确认内容没问题后执行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;生成的整站文件会输出到 &lt;code&gt;public&lt;/code&gt; 目录。这个目录里全是 &lt;code&gt;.html&lt;/code&gt;、&lt;code&gt;.css&lt;/code&gt;、&lt;code&gt;.js&lt;/code&gt; 和图片，不依赖任何后端程序，直接丢到任意静态托管或 Nginx 的站点目录下就能访问。&lt;/p&gt;
+&lt;h2 id=&#34;step-03---常见问题&#34;&gt;Step 03 - 常见问题
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;样式没生效&lt;/strong&gt;：大概率是用了 standard 版本，换成 extended 版本重新构建。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;中文标题的文章链接变成一长串编码&lt;/strong&gt;：在文章的 front matter 里加一行 &lt;code&gt;slug&lt;/code&gt;，手动指定这段链接，可读性会好很多。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;图片显示不出来&lt;/strong&gt;：优先使用文章资源目录（page bundle）里的相对路径；路径中尽量不要出现 &lt;code&gt;#&lt;/code&gt;、&lt;code&gt;?&lt;/code&gt; 这类在 URL 里有特殊含义的字符，否则会被浏览器截断。&lt;/p&gt;
+&lt;h2 id=&#34;小结&#34;&gt;小结
+&lt;/h2&gt;&lt;p&gt;整套流程的核心只有一句话：用 &lt;code&gt;hugo new&lt;/code&gt; / 手写 Markdown 产出内容，用 &lt;code&gt;hugo&lt;/code&gt; 生成 &lt;code&gt;public&lt;/code&gt;，再把 &lt;code&gt;public&lt;/code&gt; 交给任意静态服务器。搞清楚这条链路之后，主题怎么换、托管放在哪里，都只是替换其中一环而已。&lt;/p&gt;
 </description>
         </item>
         
