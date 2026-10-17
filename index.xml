@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Snackbs&#39;s Blog</title>
+        <title>snackbs小站</title>
         <link>https://snackbs.asia/</link>
-        <description>Recent content on Snackbs&#39;s Blog</description>
+        <description>Recent content on snackbs小站</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright><atom:link href="https://snackbs.asia/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -30,44 +30,60 @@
 &lt;p&gt;Windows下载的版本为：&lt;strong&gt;hugo_extended_xxxx_windows_amd64.zip&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRVJGb0E0d1ZST1ZLaF8wRVZXdmFfUmdCRlVEQjNmc3p0SERoTkJWTGxwWDZMQT9lPW5aamhURA.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0-&#34;
+	width=&#34;851&#34;
+	height=&#34;35&#34;
+	srcset=&#34;https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0- 480w, https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0- 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;2431&#34;
+		data-flex-basis=&#34;5835px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;step-02---搭建博客&#34;&gt;Step 02 - 搭建博客
 &lt;/h2&gt;&lt;h3 id=&#34;21-创建博客&#34;&gt;2.1 创建博客
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;在一个你心仪的位置新建一个文件夹并将解压出来的&lt;u&gt;&lt;strong&gt;hugo.exe&lt;/strong&gt;&lt;/u&gt;移动至此文件夹，随后在该文件夹的地址栏输入&lt;code&gt;cmd&lt;/code&gt;后按下&lt;code&gt;Enter&lt;/code&gt;键唤起命令指示符&lt;img src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRWNFTDk5dE9LdTlLdG5WdnkzU3k0dDhCeTZra0dOR3RVVEJ6eWdiMUtfNWxaUT9lPVlKS3VQSg.png&#34;
-	
-	
-	
+&lt;p&gt;在一个你心仪的位置新建一个文件夹并将解压出来的&lt;u&gt;&lt;strong&gt;hugo.exe&lt;/strong&gt;&lt;/u&gt;移动至此文件夹，随后在该文件夹的地址栏输入&lt;code&gt;cmd&lt;/code&gt;后按下&lt;code&gt;Enter&lt;/code&gt;键唤起命令指示符&lt;img src=&#34;https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0-&#34;
+	width=&#34;824&#34;
+	height=&#34;275&#34;
+	srcset=&#34;https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0- 480w, https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0- 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;299&#34;
+		data-flex-basis=&#34;719px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;在弹出的命令指示符窗口中输入&lt;code&gt;hugo new site xxx(文件夹名字)&lt;/code&gt;创建你的hugo博客文件夹&lt;img src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRVdmOEg3NGE1X0ZJdEtvNzF4c3JscDRCVld0V0UtcmdsUV9fcDdnSkhmbVRBQQ.png&#34;
-	
-	
-	
+&lt;p&gt;在弹出的命令指示符窗口中输入&lt;code&gt;hugo new site xxx(文件夹名字)&lt;/code&gt;创建你的hugo博客文件夹&lt;img src=&#34;https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0-&#34;
+	width=&#34;749&#34;
+	height=&#34;245&#34;
+	srcset=&#34;https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0- 480w, https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0- 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;305&#34;
+		data-flex-basis=&#34;733px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;创建完成后输入命令&lt;code&gt;cd xxx(建立的文件夹名称)&lt;/code&gt;切换目录，并将**&lt;u&gt;hugo.exe&lt;/u&gt;**复制至该文件夹下&lt;img src=&#34;https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRVZlczRfaF8yODFOcG5UWURaRlFfTmNCMk9mNEFtQnpXUEMyX0JJQ3paaXBJQT9lPVJTd3NEOQ.png&#34;
-	
-	
-	
+&lt;p&gt;创建完成后输入命令&lt;code&gt;cd xxx(建立的文件夹名称)&lt;/code&gt;切换目录，并将**&lt;u&gt;hugo.exe&lt;/u&gt;**复制至该文件夹下&lt;img src=&#34;https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0-&#34;
+	width=&#34;985&#34;
+	height=&#34;518&#34;
+	srcset=&#34;https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0- 480w, https://snackbs.asia/p/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0- 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;456px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -81,9 +97,9 @@
         <pubDate>Mon, 25 Nov 2024 08:52:33 +0800</pubDate>
         
         <guid>https://snackbs.asia/p/hello-word/</guid>
-        <description>&lt;img src="https://dlink.host/sharepoint/aHR0cHM6Ly80eHpqaDYtbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwvc25hY2tic19vbmVrcmluY3JhZnRfY24vRVVqS2tpRFFLUEJFc3k1YmtkQXZxUUFCcDhDOGtGb1dXUVFFRzdoZVVqeVpNZw.png" alt="Featured image of post Hello Word" /&gt;&lt;h1 id=&#34;hello-word&#34;&gt;Hello Word
-&lt;/h1&gt;&lt;p&gt;此文章为Snackbs&amp;rsquo;s Blog建立后的第一篇纪念文章，它将永久保存，直至很久很久~~~&lt;br&gt;
-This article is the first commemorative post after the establishment of Snackbs&amp;rsquo;s Blog. It will be permanently preserved, until a very long time~~~&lt;/p&gt;
+        <description>&lt;img src="https://snackbs.asia/p/hello-word/111987496.png" alt="Featured image of post Hello Word" /&gt;&lt;h1 id=&#34;hello-word&#34;&gt;Hello Word
+&lt;/h1&gt;&lt;p&gt;此文章为snackbs小站建立后的第一篇纪念文章，它将永久保存，直至很久很久~~~&lt;br&gt;
+This article is the first commemorative post after the establishment of snackbs小站. It will be permanently preserved, until a very long time~~~&lt;/p&gt;
 &lt;h1 id=&#34;鸣谢&#34;&gt;鸣谢
 &lt;/h1&gt;&lt;p&gt;Snackbs &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; 全部搭建工作&lt;br&gt;
 Hugo静态站点生成器 &amp;mdash;&amp;mdash;- 提供了搭建底层 &lt;br&gt;
@@ -249,7 +265,7 @@ bilibili: &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/402971
 &lt;hr&gt;
 &lt;h3 id=&#34;000---new&#34;&gt;0.0.0 - New!
 &lt;/h3&gt;&lt;p&gt;**snackbs 发布于 24.11.25 08:00:00 v0.0.0&lt;/p&gt;
-&lt;p&gt;Snackbs&amp;rsquo;s Blog 正式建立！！！&lt;/p&gt;
+&lt;p&gt;snackbs小站 正式建立！！！&lt;/p&gt;
 </description>
         </item>
         <item>
