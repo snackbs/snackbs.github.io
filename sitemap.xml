@@ -2,41 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://snackbs.asia/tags/1panel/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
+    <loc>https://snackbs.asia/tags/blog%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2026-10-18T07:58:08+00:00</lastmod>
   </url><url>
     <loc>https://snackbs.asia/categories/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
-  </url><url>
-    <loc>https://snackbs.asia/tags/ecs/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
+    <lastmod>2026-10-18T07:58:08+00:00</lastmod>
   </url><url>
     <loc>https://snackbs.asia/tags/hugo/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
-  </url><url>
-    <loc>https://snackbs.asia/p/hugo-ecs-1panel/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
-  </url><url>
-    <loc>https://snackbs.asia/post/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
-  </url><url>
-    <loc>https://snackbs.asia/tags/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
-  </url><url>
-    <loc>https://snackbs.asia/tags/%E5%A4%87%E6%A1%88/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
-  </url><url>
-    <loc>https://snackbs.asia/categories/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
-  </url><url>
-    <loc>https://snackbs.asia/tags/blog%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
+    <lastmod>2026-10-18T07:58:08+00:00</lastmod>
   </url><url>
     <loc>https://snackbs.asia/p/hugo-setup-1/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
+    <lastmod>2026-10-18T07:58:08+00:00</lastmod>
+  </url><url>
+    <loc>https://snackbs.asia/post/</loc>
+    <lastmod>2026-10-18T07:58:08+00:00</lastmod>
   </url><url>
     <loc>https://snackbs.asia/tags/stack/</loc>
-    <lastmod>2026-10-18T07:54:07+00:00</lastmod>
+    <lastmod>2026-10-18T07:58:08+00:00</lastmod>
+  </url><url>
+    <loc>https://snackbs.asia/tags/</loc>
+    <lastmod>2026-10-18T07:58:08+00:00</lastmod>
+  </url><url>
+    <loc>https://snackbs.asia/categories/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2026-10-18T07:58:08+00:00</lastmod>
   </url><url>
     <loc>https://snackbs.asia/page/</loc>
     <lastmod>2026-10-18T04:13:17+08:00</lastmod>

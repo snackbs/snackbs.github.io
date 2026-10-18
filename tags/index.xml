@@ -7,44 +7,20 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Sun, 18 Oct 2026 07:54:07 +0000</lastBuildDate><atom:link href="https://snackbs.asia/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>1Panel</title>
-        <link>https://snackbs.asia/tags/1panel/</link>
-        <pubDate>Sun, 18 Oct 2026 15:40:00 +0800</pubDate>
-        
-        <guid>https://snackbs.asia/tags/1panel/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>ECS</title>
-        <link>https://snackbs.asia/tags/ecs/</link>
-        <pubDate>Sun, 18 Oct 2026 15:40:00 +0800</pubDate>
-        
-        <guid>https://snackbs.asia/tags/ecs/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Hugo</title>
-        <link>https://snackbs.asia/tags/hugo/</link>
-        <pubDate>Sun, 18 Oct 2026 15:40:00 +0800</pubDate>
-        
-        <guid>https://snackbs.asia/tags/hugo/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>备案</title>
-        <link>https://snackbs.asia/tags/%E5%A4%87%E6%A1%88/</link>
-        <pubDate>Sun, 18 Oct 2026 15:40:00 +0800</pubDate>
-        
-        <guid>https://snackbs.asia/tags/%E5%A4%87%E6%A1%88/</guid>
-        <description></description>
-        </item>
-        <item>
+        <lastBuildDate>Sun, 18 Oct 2026 07:58:08 +0000</lastBuildDate><atom:link href="https://snackbs.asia/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Blog搭建</title>
         <link>https://snackbs.asia/tags/blog%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Fri, 29 Nov 2024 19:01:10 +0800</pubDate>
         
         <guid>https://snackbs.asia/tags/blog%E6%90%AD%E5%BB%BA/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Hugo</title>
+        <link>https://snackbs.asia/tags/hugo/</link>
+        <pubDate>Fri, 29 Nov 2024 19:01:10 +0800</pubDate>
+        
+        <guid>https://snackbs.asia/tags/hugo/</guid>
         <description></description>
         </item>
         <item>
