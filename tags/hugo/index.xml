@@ -7,7 +7,279 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>by snackbs</copyright>
-        <lastBuildDate>Sun, 18 Oct 2026 07:49:23 +0000</lastBuildDate><atom:link href="https://snackbs.asia/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 18 Oct 2026 07:54:07 +0000</lastBuildDate><atom:link href="https://snackbs.asia/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo博客搭建日记 #2 - 迁移到阿里云 ECS 并用 1Panel 托管</title>
+        <link>https://snackbs.asia/p/hugo-ecs-1panel/</link>
+        <pubDate>Sun, 18 Oct 2026 15:40:00 +0800</pubDate>
+        
+        <guid>https://snackbs.asia/p/hugo-ecs-1panel/</guid>
+        <description>&lt;h2 id=&#34;为什么要迁移&#34;&gt;为什么要迁移
+&lt;/h2&gt;&lt;p&gt;前一篇里站点是丢在 GitHub Pages 上的，省事，但有两个绕不过去的问题：一是域名解析指向的是境外 IP，访问速度和稳定性都不太可控；二是国内云服务器做 ICP 备案时，核验环节会检查域名是否真的解析到了接入商的服务器上，解析还在 GitHub 就过不了。&lt;/p&gt;
+&lt;p&gt;所以这一步做的事很简单：把本地 &lt;code&gt;hugo&lt;/code&gt; 生成的 &lt;code&gt;public&lt;/code&gt; 目录搬到阿里云 ECS 上，用 1Panel 里的 OpenResty 当静态服务器。整条链路没有后端程序、没有数据库，迁移成本很低。&lt;/p&gt;
+&lt;p&gt;本篇环境：阿里云 ECS（上海），Debian GNU/Linux 12，已安装 1Panel 面板。&lt;/p&gt;
+&lt;h2 id=&#34;step-01---迁移前要准备的东西&#34;&gt;Step 01 - 迁移前要准备的东西
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;项目&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ECS 公网 IP&lt;/td&gt;
+          &lt;td&gt;后面域名 A 记录要指向它&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1Panel 面板地址&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;http://ECS公网IP:面板端口/安全入口&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;本地 Hugo 环境&lt;/td&gt;
+          &lt;td&gt;能正常执行 &lt;code&gt;hugo&lt;/code&gt; 命令&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;域名&lt;/td&gt;
+          &lt;td&gt;已注册，能改 DNS 解析&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&#34;notice notice-tip&#34; &gt;
+    &lt;div class=&#34;notice-title&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;icon notice-icon&#34; viewBox=&#34;0 0 512 512&#34; fill=&#34;#437052&#34;&gt;&lt;path d=&#34;M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z&#34;/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;1Panel 的网站功能依赖&lt;strong&gt;应用商店里的 OpenResty&lt;/strong&gt;，不是系统自带的 nginx。如果面板里还没装，先到「应用商店」搜 OpenResty 安装，否则「网站」菜单建站会失败。&lt;/p&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;step-02---在-1panel-里创建静态网站&#34;&gt;Step 02 - 在 1Panel 里创建静态网站
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;打开 1Panel，左侧菜单进入 &lt;strong&gt;网站 → 创建网站&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网站类型选 &lt;strong&gt;静态网站&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;域名填 &lt;code&gt;snackbs.asia&lt;/code&gt; 和 &lt;code&gt;www.snackbs.asia&lt;/code&gt;（一行一个，或者用逗号分隔，具体以面板提示为准）；备案还没下来之前，这里也可以先填 ECS 的公网 IP 做测试。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网站目录保持默认即可，1Panel 会在安装目录下生成对应路径，形如：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/opt/1panel/apps/openresty/openresty/www/sites/snackbs.asia/index
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果你的 1Panel 装在 &lt;code&gt;/data&lt;/code&gt; 下，路径会变成 &lt;code&gt;/data/1panel/apps/openresty/openresty/www/sites/...&lt;/code&gt;。以面板里「网站目录」实际显示的为准，别照抄。&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;其他选项（PHP、伪静态、SSL）先不用管，创建完成。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;创建好之后，1Panel 会自动往 OpenResty 的配置里加一个 server 块，站点根目录就是你刚才看到的那个 &lt;code&gt;index&lt;/code&gt; 文件夹。&lt;/p&gt;
+&lt;h2 id=&#34;step-03---上传构建产物&#34;&gt;Step 03 - 上传构建产物
+&lt;/h2&gt;&lt;h3 id=&#34;31-本地生成-public&#34;&gt;3.1 本地生成 public
+&lt;/h3&gt;&lt;p&gt;在站点根目录执行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo --minify
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;生成的整站文件都在 &lt;code&gt;public&lt;/code&gt; 目录里，全是静态文件，不需要 Hugo、不需要 Node.js 就能跑。&lt;/p&gt;
+
+&lt;div class=&#34;notice notice-warning&#34; &gt;
+    &lt;div class=&#34;notice-title&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;icon notice-icon&#34; viewBox=&#34;0 0 576 512&#34; fill=&#34;#704343&#34;&gt;&lt;path d=&#34;M570 440c18 32-5 72-42 72H48c-37 0-60-40-42-72L246 24c19-32 65-32 84 0l240 416zm-282-86a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z&#34;/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;上传前检查 &lt;code&gt;hugo.yaml&lt;/code&gt; 里的 &lt;code&gt;baseurl&lt;/code&gt; 必须和最终访问地址一致（比如 &lt;code&gt;https://snackbs.asia/&lt;/code&gt;，注意结尾斜杠）。写错了会出现 CSS 能加载但图片全裂、或者链接跳到旧域名的现象。&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;另外 &lt;code&gt;public&lt;/code&gt; 里如果有 &lt;code&gt;CNAME&lt;/code&gt; 文件，那是 GitHub Pages 专用的，上传到 ECS 前删掉。&lt;/p&gt;
+&lt;h3 id=&#34;32-打包上传&#34;&gt;3.2 打包上传
+&lt;/h3&gt;&lt;p&gt;本地把 &lt;code&gt;public&lt;/code&gt; 打成压缩包，然后通过 1Panel 的&lt;strong&gt;文件管理器&lt;/strong&gt;上传：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;进入 1Panel 左侧 &lt;strong&gt;文件&lt;/strong&gt;，定位到网站目录 &lt;code&gt;.../www/sites/snackbs.asia/index&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;先把目录里 1Panel 默认生成的 &lt;code&gt;index.html&lt;/code&gt; 之类占位文件删掉。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上传压缩包，右键解压，把内容铺到这个目录下（保证 &lt;code&gt;index.html&lt;/code&gt; 直接位于该目录，而不是多套一层 &lt;code&gt;public&lt;/code&gt;）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;服务器没装解压工具的话，先在终端执行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install -y unzip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;站点文件比较多或者想少点手动操作时，用 &lt;code&gt;rsync&lt;/code&gt; 更省事（本地终端执行）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rsync -avz --delete ./public/ root@ECS公网IP:/opt/1panel/apps/openresty/openresty/www/sites/snackbs.asia/index/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;--delete&lt;/code&gt; 会清掉服务器上多余的老文件，配合 &lt;code&gt;public&lt;/code&gt; 的完整产物使用，能避免旧页面残留。第一次用之前务必确认路径没错，这个参数是会真删东西的。&lt;/p&gt;
+&lt;h3 id=&#34;33-权限&#34;&gt;3.3 权限
+&lt;/h3&gt;&lt;p&gt;解压完如果访问是 403，先看权限。站点目录用 755 最稳妥：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod -R &lt;span class=&#34;m&#34;&gt;755&lt;/span&gt; /opt/1panel/apps/openresty/openresty/www/sites/snackbs.asia/index
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;目录和文件都给 755 就够读了，不放可执行脚本的静态站点不需要更宽的权限。&lt;/p&gt;
+&lt;h2 id=&#34;step-04---域名解析&#34;&gt;Step 04 - 域名解析
+&lt;/h2&gt;&lt;p&gt;到域名服务商的控制台加两条 A 记录：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;主机记录&lt;/th&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;记录值&lt;/th&gt;
+          &lt;th&gt;TTL&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;@&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;A&lt;/td&gt;
+          &lt;td&gt;ECS 公网 IP&lt;/td&gt;
+          &lt;td&gt;600&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;www&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;A&lt;/td&gt;
+          &lt;td&gt;ECS 公网 IP&lt;/td&gt;
+          &lt;td&gt;600&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;TTL 先设小一点（600 秒），方便出问题时快速回滚。&lt;/p&gt;
+&lt;p&gt;生效后本地验证：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nslookup snackbs.asia
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dig +short snackbs.asia
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;返回的是 ECS 公网 IP 就对了。注意 GitHub Pages 时代留下的解析记录要删干净，尤其是那条指向 &lt;code&gt;185.199.x.x&lt;/code&gt; 的 A 记录。&lt;/p&gt;
+
+&lt;div class=&#34;notice notice-info&#34; &gt;
+    &lt;div class=&#34;notice-title&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;icon notice-icon&#34; viewBox=&#34;0 0 512 512&#34; fill=&#34;#705943&#34;&gt;&lt;path d=&#34;M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z&#34;/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;解析改完到全量生效通常要几分钟到几十分钟，受 TTL 和各地 DNS 缓存影响。这期间不同网络下访问结果可能不一致，别急着判断配置错了。&lt;/p&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;step-05---开放端口与-https&#34;&gt;Step 05 - 开放端口与 HTTPS
+&lt;/h2&gt;&lt;h3 id=&#34;51-安全组&#34;&gt;5.1 安全组
+&lt;/h3&gt;&lt;p&gt;阿里云控制台 → ECS 实例 → 安全组，入方向只放必要的端口：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;端口&lt;/th&gt;
+          &lt;th&gt;用途&lt;/th&gt;
+          &lt;th&gt;来源&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;80&lt;/td&gt;
+          &lt;td&gt;HTTP（含证书申请验证）&lt;/td&gt;
+          &lt;td&gt;0.0.0.0/0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;443&lt;/td&gt;
+          &lt;td&gt;HTTPS&lt;/td&gt;
+          &lt;td&gt;0.0.0.0/0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1Panel 面板端口&lt;/td&gt;
+          &lt;td&gt;面板管理&lt;/td&gt;
+          &lt;td&gt;只填自己常用的出口 IP，不要放 0.0.0.0/0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SSH 端口&lt;/td&gt;
+          &lt;td&gt;运维&lt;/td&gt;
+          &lt;td&gt;同上，尽量收窄&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;最小原则：能填 /32 的就不填 0.0.0.0/0。面板端口和 SSH 端口暴露在公网被撞库是很常见的事，收窄来源比改复杂密码更有效。&lt;/p&gt;
+&lt;h3 id=&#34;52-申请证书&#34;&gt;5.2 申请证书
+&lt;/h3&gt;&lt;p&gt;1Panel 里进入 &lt;strong&gt;网站 → 点网站名 → HTTPS&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;选择 &lt;strong&gt;Let&amp;rsquo;s Encrypt&lt;/strong&gt;，勾选 &lt;code&gt;snackbs.asia&lt;/code&gt; 和 &lt;code&gt;www.snackbs.asia&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;验证方式选 &lt;strong&gt;HTTP 验证&lt;/strong&gt;（要求 80 端口对外开放，且域名已经解析到本机）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;申请成功后打开 &lt;strong&gt;强制 HTTPS&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;申请失败最常见的原因就两个：80 端口没在安全组放行，或者域名还没解析过来。证书有效期 90 天，1Panel 默认会自动续期，留意面板里的到期提醒就行。&lt;/p&gt;
+
+&lt;div class=&#34;notice notice-tip&#34; &gt;
+    &lt;div class=&#34;notice-title&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;icon notice-icon&#34; viewBox=&#34;0 0 512 512&#34; fill=&#34;#437052&#34;&gt;&lt;path d=&#34;M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z&#34;/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;如果域名还没备案，阿里云会对 80 端口的域名访问做拦截，页面会跳到一个提示页，这是正常的，不代表站点配置有问题。备案通过后会自动放行。这期间想先看效果，可以在本地 hosts 里把域名指到 ECS IP，用 443 访问。&lt;/p&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;step-06---备案期间要注意的几件事&#34;&gt;Step 06 - 备案期间要注意的几件事
+&lt;/h2&gt;&lt;p&gt;迁移到 ECS 之后，备案核验看的是这几样东西，提前对齐能少跑一趟：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;域名必须解析到这台 ECS&lt;/strong&gt;。这是最容易被打回的一项，解析还在别处就是「未接入」。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;网站要能正常打开&lt;/strong&gt;，并且首页标题和备案填报的「网站名称」一致。本站标题统一是 &lt;code&gt;snackbs小站&lt;/code&gt;，页面上看到的和填报的要对得上。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;备案期间别关站&lt;/strong&gt;。核验人员会实际访问，打不开或者只是个空白页都可能被判为无效网站。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;网站内容要和备案信息匹配&lt;/strong&gt;。个人博客就写博客内容，别混进论坛、商城、下载站这类需要前置审批的形态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;备案通过后 30 日内&lt;/strong&gt;到公安备案系统做联网备案，这是独立于 ICP 的另一套流程。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;step-07---日常更新流程&#34;&gt;Step 07 - 日常更新流程
+&lt;/h2&gt;&lt;p&gt;迁移完成后，发文章的流程变成三步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;本地写 Markdown，&lt;code&gt;hugo server&lt;/code&gt; 预览。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;hugo --minify&lt;/code&gt; 生成 &lt;code&gt;public&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把 &lt;code&gt;public&lt;/code&gt; 同步到服务器站点目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;手动 &lt;code&gt;rsync&lt;/code&gt; 足够用。如果嫌麻烦，也可以在 GitHub Actions 里加一步：构建完用 &lt;code&gt;rsync&lt;/code&gt; + SSH 私钥（存到仓库 Secrets）直接推到 ECS。思路和原来的 GitHub Pages 部署一致，只是最后一步的目标从仓库换成了服务器目录。&lt;/p&gt;
+&lt;p&gt;1Panel 的&lt;strong&gt;文件管理器&lt;/strong&gt;和&lt;strong&gt;计划任务&lt;/strong&gt;里也有现成的备份功能，站点目录可以定期打包存到对象存储，成本很低。&lt;/p&gt;
+&lt;h2 id=&#34;step-08---常见问题&#34;&gt;Step 08 - 常见问题
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;访问 403&lt;/strong&gt;：目录权限不对，或者 &lt;code&gt;index.html&lt;/code&gt; 不在站点根目录（多套了一层文件夹）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;访问 404&lt;/strong&gt;：1Panel 里网站的根目录和实际放文件的目录不是同一个，回面板核对「网站目录」。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;页面能开但样式全乱&lt;/strong&gt;：&lt;code&gt;baseurl&lt;/code&gt; 和实际访问的协议/域名不一致，Hugo 生成的是绝对路径，改完重新 &lt;code&gt;hugo&lt;/code&gt; 构建再传。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;图片 404，其他正常&lt;/strong&gt;：检查图片是否一起上传了（&lt;code&gt;public&lt;/code&gt; 里应该带 &lt;code&gt;images&lt;/code&gt;/&lt;code&gt;p&lt;/code&gt; 等目录），以及文件名里有没有 &lt;code&gt;#&lt;/code&gt;、&lt;code&gt;?&lt;/code&gt; 这类在 URL 中有特殊含义的字符。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证书申请一直失败&lt;/strong&gt;：先确认 80 端口能从公网访问，再确认域名解析指向的是这台机器，最后看 1Panel 里有没有别的站点占用了 80。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;改了文件但浏览器还是旧的&lt;/strong&gt;：清浏览器缓存，或者在 1Panel 网站设置里清理缓存；用了 CDN 的话还要在 CDN 侧刷一下。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1Panel 面板打不开&lt;/strong&gt;：面板端口的安全组规则是不是被自己改没了，或者面板服务没起来（终端 &lt;code&gt;systemctl status 1panel&lt;/code&gt; 看状态）。&lt;/p&gt;
+&lt;h2 id=&#34;小结&#34;&gt;小结
+&lt;/h2&gt;&lt;p&gt;迁移这件事本身没什么技术含量，核心就是把 &lt;code&gt;public&lt;/code&gt; 目录换一个地方放：原来的地方叫 GitHub Pages，现在叫 ECS 上的一个文件夹，外面套一层 OpenResty。&lt;/p&gt;
+&lt;p&gt;真正需要花心思的是迁移之后的两件事——&lt;strong&gt;域名解析要指向这台机器&lt;/strong&gt;，&lt;strong&gt;站点要能稳定打开&lt;/strong&gt;。这两条既决定备案能不能过，也决定后面所有事情能不能继续往下走。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Hugo博客搭建日记 #1 - 初步搭建并引入Stack主题</title>
         <link>https://snackbs.asia/p/hugo-setup-1/</link>
         <pubDate>Fri, 29 Nov 2024 19:01:10 +0800</pubDate>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="把 Hugo 生成的静态站点从 GitHub Pages 迁移到阿里云 ECS（Debian 12），用 1Panel 的 OpenResty 托管，包含建站、上传、域名解析、HTTPS 与备案配合的完整流程">
+<title>Hugo博客搭建日记 #2 - 迁移到阿里云 ECS 并用 1Panel 托管</title>
+
+<link rel='canonical' href='https://snackbs.asia/p/hugo-ecs-1panel/'>
+
+<link rel="stylesheet" href="/scss/style.min.f5a77199dbe609e4c0c77a1e05be5dbb3f908fa84c2575ec8ffe8f492ed1cb20.css"><meta property='og:title' content="Hugo博客搭建日记 #2 - 迁移到阿里云 ECS 并用 1Panel 托管">
+<meta property='og:description' content="把 Hugo 生成的静态站点从 GitHub Pages 迁移到阿里云 ECS（Debian 12），用 1Panel 的 OpenResty 托管，包含建站、上传、域名解析、HTTPS 与备案配合的完整流程">
+<meta property='og:url' content='https://snackbs.asia/p/hugo-ecs-1panel/'>
+<meta property='og:site_name' content='snackbs小站'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='1Panel' /><meta property='article:tag' content='ECS' /><meta property='article:tag' content='备案' /><meta property='article:published_time' content='2026-10-18T15:40:00&#43;08:00'/><meta property='article:modified_time' content='2026-10-18T07:54:07&#43;00:00'/>
+<meta name="twitter:title" content="Hugo博客搭建日记 #2 - 迁移到阿里云 ECS 并用 1Panel 托管">
+<meta name="twitter:description" content="把 Hugo 生成的静态站点从 GitHub Pages 迁移到阿里云 ECS（Debian 12），用 1Panel 的 OpenResty 托管，包含建站、上传、域名解析、HTTPS 与备案配合的完整流程">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu17529283893284472296.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">👀</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">snackbs小站</a></h1>
+            <h2 class="site-description">欢迎访问snackbs小站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/2124892076'
+                        target="_blank"
+                        title="bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> <path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6z"></path> <path d="M8 3l2 3"></path> <path d="M16 3l-2 3"></path> <path d="M9 13v-2"></path> <path d="M15 11v2"></path> </svg> 
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/snackbs'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories-tags/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tags"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 8v4.172a2 2 0 0 0 .586 1.414l5.71 5.71a2.41 2.41 0 0 0 3.408 0l3.592 -3.592a2.41 2.41 0 0 0 0 -3.408l-5.71 -5.71a2 2 0 0 0 -1.414 -.586h-4.172a2 2 0 0 0 -2 2z" /><path d="M18 19l1.592 -1.592a4.82 4.82 0 0 0 0 -6.816l-4.592 -4.592" /><path d="M7 10h-.01" /></svg>
+                
+                <span>分类&amp;标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#为什么要迁移">为什么要迁移</a></li>
+    <li><a href="#step-01---迁移前要准备的东西">Step 01 - 迁移前要准备的东西</a></li>
+    <li><a href="#step-02---在-1panel-里创建静态网站">Step 02 - 在 1Panel 里创建静态网站</a></li>
+    <li><a href="#step-03---上传构建产物">Step 03 - 上传构建产物</a>
+      <ol>
+        <li><a href="#31-本地生成-public">3.1 本地生成 public</a></li>
+        <li><a href="#32-打包上传">3.2 打包上传</a></li>
+        <li><a href="#33-权限">3.3 权限</a></li>
+      </ol>
+    </li>
+    <li><a href="#step-04---域名解析">Step 04 - 域名解析</a></li>
+    <li><a href="#step-05---开放端口与-https">Step 05 - 开放端口与 HTTPS</a>
+      <ol>
+        <li><a href="#51-安全组">5.1 安全组</a></li>
+        <li><a href="#52-申请证书">5.2 申请证书</a></li>
+      </ol>
+    </li>
+    <li><a href="#step-06---备案期间要注意的几件事">Step 06 - 备案期间要注意的几件事</a></li>
+    <li><a href="#step-07---日常更新流程">Step 07 - 日常更新流程</a></li>
+    <li><a href="#step-08---常见问题">Step 08 - 常见问题</a></li>
+    <li><a href="#小结">小结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%95%99%E7%A8%8B/" >
+                教程
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/hugo-ecs-1panel/">Hugo博客搭建日记 #2 - 迁移到阿里云 ECS 并用 1Panel 托管</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            把 Hugo 生成的静态站点从 GitHub Pages 迁移到阿里云 ECS（Debian 12），用 1Panel 的 OpenResty 托管，包含建站、上传、域名解析、HTTPS 与备案配合的完整流程
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        <div class="article-lastmod">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time>
+                    2026-10-18T07:54
+                </time>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2026-10-18</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="为什么要迁移">为什么要迁移
+</h2><p>前一篇里站点是丢在 GitHub Pages 上的，省事，但有两个绕不过去的问题：一是域名解析指向的是境外 IP，访问速度和稳定性都不太可控；二是国内云服务器做 ICP 备案时，核验环节会检查域名是否真的解析到了接入商的服务器上，解析还在 GitHub 就过不了。</p>
+<p>所以这一步做的事很简单：把本地 <code>hugo</code> 生成的 <code>public</code> 目录搬到阿里云 ECS 上，用 1Panel 里的 OpenResty 当静态服务器。整条链路没有后端程序、没有数据库，迁移成本很低。</p>
+<p>本篇环境：阿里云 ECS（上海），Debian GNU/Linux 12，已安装 1Panel 面板。</p>
+<h2 id="step-01---迁移前要准备的东西">Step 01 - 迁移前要准备的东西
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ECS 公网 IP</td>
+          <td>后面域名 A 记录要指向它</td>
+      </tr>
+      <tr>
+          <td>1Panel 面板地址</td>
+          <td><code>http://ECS公网IP:面板端口/安全入口</code></td>
+      </tr>
+      <tr>
+          <td>本地 Hugo 环境</td>
+          <td>能正常执行 <code>hugo</code> 命令</td>
+      </tr>
+      <tr>
+          <td>域名</td>
+          <td>已注册，能改 DNS 解析</td>
+      </tr>
+  </tbody>
+</table></div>
+
+<div class="notice notice-tip" >
+    <div class="notice-title"><svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#437052"><path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z"/></svg></div><p>1Panel 的网站功能依赖<strong>应用商店里的 OpenResty</strong>，不是系统自带的 nginx。如果面板里还没装，先到「应用商店」搜 OpenResty 安装，否则「网站」菜单建站会失败。</p></div>
+
+<h2 id="step-02---在-1panel-里创建静态网站">Step 02 - 在 1Panel 里创建静态网站
+</h2><ol>
+<li>
+<p>打开 1Panel，左侧菜单进入 <strong>网站 → 创建网站</strong>。</p>
+</li>
+<li>
+<p>网站类型选 <strong>静态网站</strong>。</p>
+</li>
+<li>
+<p>域名填 <code>snackbs.asia</code> 和 <code>www.snackbs.asia</code>（一行一个，或者用逗号分隔，具体以面板提示为准）；备案还没下来之前，这里也可以先填 ECS 的公网 IP 做测试。</p>
+</li>
+<li>
+<p>网站目录保持默认即可，1Panel 会在安装目录下生成对应路径，形如：</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">/opt/1panel/apps/openresty/openresty/www/sites/snackbs.asia/index
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果你的 1Panel 装在 <code>/data</code> 下，路径会变成 <code>/data/1panel/apps/openresty/openresty/www/sites/...</code>。以面板里「网站目录」实际显示的为准，别照抄。</p>
+<ol start="5">
+<li>其他选项（PHP、伪静态、SSL）先不用管，创建完成。</li>
+</ol>
+<p>创建好之后，1Panel 会自动往 OpenResty 的配置里加一个 server 块，站点根目录就是你刚才看到的那个 <code>index</code> 文件夹。</p>
+<h2 id="step-03---上传构建产物">Step 03 - 上传构建产物
+</h2><h3 id="31-本地生成-public">3.1 本地生成 public
+</h3><p>在站点根目录执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --minify
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成的整站文件都在 <code>public</code> 目录里，全是静态文件，不需要 Hugo、不需要 Node.js 就能跑。</p>
+
+<div class="notice notice-warning" >
+    <div class="notice-title"><svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 576 512" fill="#704343"><path d="M570 440c18 32-5 72-42 72H48c-37 0-60-40-42-72L246 24c19-32 65-32 84 0l240 416zm-282-86a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z"/></svg></div><p>上传前检查 <code>hugo.yaml</code> 里的 <code>baseurl</code> 必须和最终访问地址一致（比如 <code>https://snackbs.asia/</code>，注意结尾斜杠）。写错了会出现 CSS 能加载但图片全裂、或者链接跳到旧域名的现象。</p></div>
+
+<p>另外 <code>public</code> 里如果有 <code>CNAME</code> 文件，那是 GitHub Pages 专用的，上传到 ECS 前删掉。</p>
+<h3 id="32-打包上传">3.2 打包上传
+</h3><p>本地把 <code>public</code> 打成压缩包，然后通过 1Panel 的<strong>文件管理器</strong>上传：</p>
+<ol>
+<li>
+<p>进入 1Panel 左侧 <strong>文件</strong>，定位到网站目录 <code>.../www/sites/snackbs.asia/index</code>。</p>
+</li>
+<li>
+<p>先把目录里 1Panel 默认生成的 <code>index.html</code> 之类占位文件删掉。</p>
+</li>
+<li>
+<p>上传压缩包，右键解压，把内容铺到这个目录下（保证 <code>index.html</code> 直接位于该目录，而不是多套一层 <code>public</code>）。</p>
+</li>
+</ol>
+<p>服务器没装解压工具的话，先在终端执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt update <span class="o">&amp;&amp;</span> apt install -y unzip
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>站点文件比较多或者想少点手动操作时，用 <code>rsync</code> 更省事（本地终端执行）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rsync -avz --delete ./public/ root@ECS公网IP:/opt/1panel/apps/openresty/openresty/www/sites/snackbs.asia/index/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>--delete</code> 会清掉服务器上多余的老文件，配合 <code>public</code> 的完整产物使用，能避免旧页面残留。第一次用之前务必确认路径没错，这个参数是会真删东西的。</p>
+<h3 id="33-权限">3.3 权限
+</h3><p>解压完如果访问是 403，先看权限。站点目录用 755 最稳妥：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod -R <span class="m">755</span> /opt/1panel/apps/openresty/openresty/www/sites/snackbs.asia/index
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>目录和文件都给 755 就够读了，不放可执行脚本的静态站点不需要更宽的权限。</p>
+<h2 id="step-04---域名解析">Step 04 - 域名解析
+</h2><p>到域名服务商的控制台加两条 A 记录：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>主机记录</th>
+          <th>类型</th>
+          <th>记录值</th>
+          <th>TTL</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>@</code></td>
+          <td>A</td>
+          <td>ECS 公网 IP</td>
+          <td>600</td>
+      </tr>
+      <tr>
+          <td><code>www</code></td>
+          <td>A</td>
+          <td>ECS 公网 IP</td>
+          <td>600</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>TTL 先设小一点（600 秒），方便出问题时快速回滚。</p>
+<p>生效后本地验证：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nslookup snackbs.asia
+</span></span><span class="line"><span class="cl">dig +short snackbs.asia
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>返回的是 ECS 公网 IP 就对了。注意 GitHub Pages 时代留下的解析记录要删干净，尤其是那条指向 <code>185.199.x.x</code> 的 A 记录。</p>
+
+<div class="notice notice-info" >
+    <div class="notice-title"><svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#705943"><path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/></svg></div><p>解析改完到全量生效通常要几分钟到几十分钟，受 TTL 和各地 DNS 缓存影响。这期间不同网络下访问结果可能不一致，别急着判断配置错了。</p></div>
+
+<h2 id="step-05---开放端口与-https">Step 05 - 开放端口与 HTTPS
+</h2><h3 id="51-安全组">5.1 安全组
+</h3><p>阿里云控制台 → ECS 实例 → 安全组，入方向只放必要的端口：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>端口</th>
+          <th>用途</th>
+          <th>来源</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>80</td>
+          <td>HTTP（含证书申请验证）</td>
+          <td>0.0.0.0/0</td>
+      </tr>
+      <tr>
+          <td>443</td>
+          <td>HTTPS</td>
+          <td>0.0.0.0/0</td>
+      </tr>
+      <tr>
+          <td>1Panel 面板端口</td>
+          <td>面板管理</td>
+          <td>只填自己常用的出口 IP，不要放 0.0.0.0/0</td>
+      </tr>
+      <tr>
+          <td>SSH 端口</td>
+          <td>运维</td>
+          <td>同上，尽量收窄</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>最小原则：能填 /32 的就不填 0.0.0.0/0。面板端口和 SSH 端口暴露在公网被撞库是很常见的事，收窄来源比改复杂密码更有效。</p>
+<h3 id="52-申请证书">5.2 申请证书
+</h3><p>1Panel 里进入 <strong>网站 → 点网站名 → HTTPS</strong>：</p>
+<ol>
+<li>
+<p>选择 <strong>Let&rsquo;s Encrypt</strong>，勾选 <code>snackbs.asia</code> 和 <code>www.snackbs.asia</code>。</p>
+</li>
+<li>
+<p>验证方式选 <strong>HTTP 验证</strong>（要求 80 端口对外开放，且域名已经解析到本机）。</p>
+</li>
+<li>
+<p>申请成功后打开 <strong>强制 HTTPS</strong>。</p>
+</li>
+</ol>
+<p>申请失败最常见的原因就两个：80 端口没在安全组放行，或者域名还没解析过来。证书有效期 90 天，1Panel 默认会自动续期，留意面板里的到期提醒就行。</p>
+
+<div class="notice notice-tip" >
+    <div class="notice-title"><svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#437052"><path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z"/></svg></div><p>如果域名还没备案，阿里云会对 80 端口的域名访问做拦截，页面会跳到一个提示页，这是正常的，不代表站点配置有问题。备案通过后会自动放行。这期间想先看效果，可以在本地 hosts 里把域名指到 ECS IP，用 443 访问。</p></div>
+
+<h2 id="step-06---备案期间要注意的几件事">Step 06 - 备案期间要注意的几件事
+</h2><p>迁移到 ECS 之后，备案核验看的是这几样东西，提前对齐能少跑一趟：</p>
+<ol>
+<li>
+<p><strong>域名必须解析到这台 ECS</strong>。这是最容易被打回的一项，解析还在别处就是「未接入」。</p>
+</li>
+<li>
+<p><strong>网站要能正常打开</strong>，并且首页标题和备案填报的「网站名称」一致。本站标题统一是 <code>snackbs小站</code>，页面上看到的和填报的要对得上。</p>
+</li>
+<li>
+<p><strong>备案期间别关站</strong>。核验人员会实际访问，打不开或者只是个空白页都可能被判为无效网站。</p>
+</li>
+<li>
+<p><strong>网站内容要和备案信息匹配</strong>。个人博客就写博客内容，别混进论坛、商城、下载站这类需要前置审批的形态。</p>
+</li>
+<li>
+<p><strong>备案通过后 30 日内</strong>到公安备案系统做联网备案，这是独立于 ICP 的另一套流程。</p>
+</li>
+</ol>
+<h2 id="step-07---日常更新流程">Step 07 - 日常更新流程
+</h2><p>迁移完成后，发文章的流程变成三步：</p>
+<ol>
+<li>
+<p>本地写 Markdown，<code>hugo server</code> 预览。</p>
+</li>
+<li>
+<p><code>hugo --minify</code> 生成 <code>public</code>。</p>
+</li>
+<li>
+<p>把 <code>public</code> 同步到服务器站点目录。</p>
+</li>
+</ol>
+<p>手动 <code>rsync</code> 足够用。如果嫌麻烦，也可以在 GitHub Actions 里加一步：构建完用 <code>rsync</code> + SSH 私钥（存到仓库 Secrets）直接推到 ECS。思路和原来的 GitHub Pages 部署一致，只是最后一步的目标从仓库换成了服务器目录。</p>
+<p>1Panel 的<strong>文件管理器</strong>和<strong>计划任务</strong>里也有现成的备份功能，站点目录可以定期打包存到对象存储，成本很低。</p>
+<h2 id="step-08---常见问题">Step 08 - 常见问题
+</h2><p><strong>访问 403</strong>：目录权限不对，或者 <code>index.html</code> 不在站点根目录（多套了一层文件夹）。</p>
+<p><strong>访问 404</strong>：1Panel 里网站的根目录和实际放文件的目录不是同一个，回面板核对「网站目录」。</p>
+<p><strong>页面能开但样式全乱</strong>：<code>baseurl</code> 和实际访问的协议/域名不一致，Hugo 生成的是绝对路径，改完重新 <code>hugo</code> 构建再传。</p>
+<p><strong>图片 404，其他正常</strong>：检查图片是否一起上传了（<code>public</code> 里应该带 <code>images</code>/<code>p</code> 等目录），以及文件名里有没有 <code>#</code>、<code>?</code> 这类在 URL 中有特殊含义的字符。</p>
+<p><strong>证书申请一直失败</strong>：先确认 80 端口能从公网访问，再确认域名解析指向的是这台机器，最后看 1Panel 里有没有别的站点占用了 80。</p>
+<p><strong>改了文件但浏览器还是旧的</strong>：清浏览器缓存，或者在 1Panel 网站设置里清理缓存；用了 CDN 的话还要在 CDN 侧刷一下。</p>
+<p><strong>1Panel 面板打不开</strong>：面板端口的安全组规则是不是被自己改没了，或者面板服务没起来（终端 <code>systemctl status 1panel</code> 看状态）。</p>
+<h2 id="小结">小结
+</h2><p>迁移这件事本身没什么技术含量，核心就是把 <code>public</code> 目录换一个地方放：原来的地方叫 GitHub Pages，现在叫 ECS 上的一个文件夹，外面套一层 OpenResty。</p>
+<p>真正需要花心思的是迁移之后的两件事——<strong>域名解析要指向这台机器</strong>，<strong>站点要能稳定打开</strong>。这两条既决定备案能不能过，也决定后面所有事情能不能继续往下走。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/1panel/">1Panel</a>
+        
+            <a href="/tags/ecs/">ECS</a>
+        
+            <a href="/tags/%E5%A4%87%E6%A1%88/">备案</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>根据 CC BY-NC-SA 4.0 许可证授权</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2026-10-18T07:54
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/hugo-setup-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo博客搭建日记 #1 - 初步搭建并引入Stack主题</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <style>
+        :root {
+            --text-color-light: black;
+            --text-color-dark: white;
+            --text-color-light-faint: rgba(0, 0, 0, 0.7);
+            --text-color-dark-faint: rgba(255, 255, 255, 0.7);
+        }
+
+        .site-footer {
+            color: var(--text-color-light);
+        }
+
+        .site-footer p {
+            line-height: 0.7;
+            font-size: 13px;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .site-footer .count_info p {
+            font-size: 12px;
+            color: var(--text-color-light-faint);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .site-footer {
+                color: var(--text-color-dark);
+            }
+
+            .site-footer .count_info p {
+                color: var(--text-color-dark-faint);
+            }
+        }
+    </style>
+
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2026 by snackbs
+    </section>
+    
+    <section class="powerby">
+        
+        <p>snackbs小站</p>
+    
+        
+    </section>
+
+    
+    <section class="count_info">
+        <div>
+            <p>
+                站点运行时间 
+                <span id="ds" class="running-days">0 </span> 天
+                <span id="hs" class="running-days">0 </span> 小时
+                <span id="ms" class="running-days">0 </span> 分钟
+                <span id="ss" class="running-days">0 </span> 秒
+            </p>
+        </div>
+        <div>
+            <p>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                共发表 2 篇文章 · 总计 4.10 k 字
+            </p>
+        </div>
+    </section>
+
+    
+    <script>
+    function updateRunningTime() {
+        const startDate = '2024/11/24 23:40:00'; 
+        const start = new Date(startDate);
+        const now = new Date();
+        const timeDifference = now - start;
+
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        document.getElementById('ds').textContent = days;
+        document.getElementById('hs').textContent = hours;
+        document.getElementById('ms').textContent = minutes;
+        document.getElementById('ss').textContent = seconds;
+    }
+
+    
+    updateRunningTime();
+
+    
+    setInterval(updateRunningTime, 1000);
+    </script>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="/vendor/photoswipe/photoswipe.min.js"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="/vendor/photoswipe/photoswipe-ui-default.min.js"crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="/vendor/photoswipe/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="/vendor/photoswipe/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="/vendor/vibrant.min.js"crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script><script type="text/javascript" src="/ts/custom.ba5124b8f2f81d370a724b1dbe4d681e93cd5f3e0f95452dc6bed453b8b0c58c.js" defer></script>
+
+<style>
+	@font-face {
+	  font-family: 'awa';
+	  src: url(https://snackbs.asia/font/JinzisheZhenhao-Bold.otf) format('truetype');
+	}
+
+	:root {
+	  --base-font-family: 'awa';
+	  --code-font-family: 'awa';
+	}
+  </style>
+<link rel="stylesheet" href="/vendor/nprogress.css" />
+<script src="/vendor/nprogress.min.js"></script>
+<script>
+    if (typeof NProgress !== "undefined") {
+        NProgress.start();
+        document.addEventListener("readystatechange", () => {
+            if (document.readyState === "interactive") NProgress.inc();
+            if (document.readyState === "complete") NProgress.done();
+        });
+    }
+</script>
+
+    </body>
+</html>
